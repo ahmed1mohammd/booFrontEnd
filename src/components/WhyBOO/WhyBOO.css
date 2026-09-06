@@ -1,0 +1,56 @@
+.boo-why-section {
+  background-color: var(--bg-sidebar);
+}
+
+.boo-why-grid {
+  align-items: stretch;
+}
+
+.boo-why-card {
+  padding: 2.25rem 1.75rem;
+  background-color: #FFFFFF;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: var(--transition-normal);
+}
+
+.boo-why-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--primary);
+  box-shadow: 0 10px 24px rgba(28, 61, 90, 0.08);
+}
+
+.boo-why-icon-wrap {
+  width: 64px;
+  height: 64px;
+  border-radius: var(--radius-pill);
+  background-color: var(--primary-light);
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  transition: var(--transition-normal);
+}
+
+.boo-why-card:hover .boo-why-icon-wrap {
+  background-color: var(--primary);
+  color: #FFFFFF;
+  transform: scale(1.1);
+}
+
+.boo-why-title {
+  font-size: 1.2rem;
+  margin-bottom: 0.75rem;
+  color: var(--heading);
+}
+
+.boo-why-desc {
+  font-size: 0.9375rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}

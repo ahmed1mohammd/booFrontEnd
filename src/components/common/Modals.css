@@ -1,0 +1,231 @@
+/* Shared Modal System */
+.boo-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(18, 40, 60, 0.75);
+  backdrop-filter: blur(6px);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  animation: fadeIn 0.2s ease-out;
+}
+
+.boo-modal-container {
+  background-color: #FFFFFF;
+  border-radius: var(--radius-lg);
+  max-width: 650px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.35);
+  position: relative;
+  animation: scaleUp 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.boo-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 1.75rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.boo-modal-title {
+  font-size: 1.25rem;
+  color: var(--heading);
+  margin: 0;
+}
+
+.boo-modal-close {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-xs);
+  background-color: var(--gray-100);
+  color: var(--heading);
+  transition: var(--transition-fast);
+}
+
+.boo-modal-close:hover {
+  background-color: var(--bg-alt);
+  color: var(--primary);
+}
+
+.boo-modal-body {
+  padding: 1.75rem;
+}
+
+/* Search Modal Specifics */
+.boo-search-input-wrap {
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+
+.boo-search-input-wrap svg {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+}
+
+[dir="rtl"] .boo-search-input-wrap svg {
+  left: auto;
+  right: 1rem;
+}
+
+.boo-search-input {
+  width: 100%;
+  padding: 0.95rem 1rem 0.95rem 2.75rem;
+  font-size: 1.05rem;
+  border: 2px solid var(--border);
+  border-radius: var(--radius-sm);
+  transition: var(--transition-fast);
+}
+
+[dir="rtl"] .boo-search-input {
+  padding: 0.95rem 2.75rem 0.95rem 1rem;
+}
+
+.boo-search-input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(0, 174, 239, 0.15);
+}
+
+.boo-search-results {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  max-height: 380px;
+  overflow-y: auto;
+}
+
+.boo-search-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--gray-200);
+  transition: var(--transition-fast);
+}
+
+.boo-search-item:hover {
+  border-color: var(--primary);
+  background-color: var(--primary-light);
+}
+
+.search-item-thumb {
+  width: 54px;
+  height: 42px;
+  object-fit: cover;
+  border-radius: var(--radius-xs);
+}
+
+.search-item-info {
+  flex-grow: 1;
+}
+
+.search-item-type {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--primary);
+}
+
+.search-item-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--heading);
+}
+
+.search-item-price {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: var(--heading);
+  font-size: 0.95rem;
+}
+
+/* Car Details Modal Specifics */
+.car-detail-img {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+  margin-bottom: 1.25rem;
+}
+
+.car-detail-specs-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  background-color: var(--bg-alt);
+  padding: 1.25rem;
+  border-radius: var(--radius-sm);
+  margin-bottom: 1.5rem;
+}
+
+.car-detail-spec-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+  border-bottom: 1px dashed rgba(28, 61, 90, 0.15);
+  padding-bottom: 0.4rem;
+}
+
+.spec-key {
+  color: var(--text-muted);
+}
+
+.spec-val {
+  font-weight: 700;
+  color: var(--heading);
+}
+
+/* Service Booking Modal Form */
+.booking-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.form-group label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--heading);
+}
+
+.form-input, .form-select, .form-textarea {
+  width: 100%;
+  padding: 0.75rem 0.95rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-size: 0.95rem;
+}
+
+.form-input:focus, .form-select:focus, .form-textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(0, 174, 239, 0.12);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scaleUp {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}

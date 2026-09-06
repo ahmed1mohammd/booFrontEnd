@@ -1,0 +1,95 @@
+/* Responsive Breakpoints System */
+
+/* Large Desktop (1440px and up) */
+@media (min-width: 1440px) {
+  .container {
+    max-width: 1320px;
+  }
+}
+
+/* Standard Desktop / Laptop (1024px - 1439px) */
+@media (max-width: 1200px) {
+  .container {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+  
+  .grid-4 {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+/* Tablet Landscape & Small Desktop (1024px) */
+@media (max-width: 1024px) {
+  .section {
+    padding: 4rem 0;
+  }
+  
+  .grid-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .grid-2 {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+/* Tablet Portrait (768px - 1023px) */
+@media (max-width: 768px) {
+  :root {
+    --header-height: 70px;
+    --topbar-height: 38px;
+  }
+
+  .section {
+    padding: 3.25rem 0;
+  }
+
+  .section-header {
+    margin-bottom: 2.25rem;
+  }
+
+  .grid-3, .grid-4 {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+  
+  .btn-lg {
+    padding: 0.85rem 1.75rem;
+    font-size: 0.98rem;
+  }
+}
+
+/* Mobile Devices (480px - 767px) */
+@media (max-width: 480px) {
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .section {
+    padding: 2.75rem 0;
+  }
+
+  .btn {
+    width: 100%;
+  }
+
+  .btn-sm {
+    width: auto;
+  }
+}
+
+/* Small Mobile (360px and below) */
+@media (max-width: 360px) {
+  html {
+    font-size: 15px;
+  }
+
+  .container {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+}

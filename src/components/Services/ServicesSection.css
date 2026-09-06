@@ -1,0 +1,121 @@
+.boo-services-section {
+  background-color: var(--bg-main);
+  position: relative;
+}
+
+.boo-services-grid {
+  align-items: stretch;
+}
+
+.boo-service-card {
+  padding: 2.25rem 1.75rem;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  transition: var(--transition-normal);
+}
+
+.boo-service-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(0, 174, 239, 0.4);
+  box-shadow: 0 12px 28px rgba(28, 61, 90, 0.08);
+}
+
+.boo-service-icon-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+.boo-service-icon-wrap svg {
+  color: var(--primary);
+  background-color: var(--primary-light);
+  padding: 0.6rem;
+  border-radius: var(--radius-sm);
+  box-sizing: content-box;
+  transition: var(--transition-normal);
+}
+
+.boo-service-card:hover .boo-service-icon-wrap svg {
+  background-color: var(--primary);
+  color: #FFFFFF;
+  transform: scale(1.05);
+}
+
+.boo-service-num {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 1.75rem;
+  color: var(--border);
+  line-height: 1;
+}
+
+.boo-service-card:hover .boo-service-num {
+  color: rgba(0, 174, 239, 0.25);
+}
+
+.boo-service-title {
+  margin-bottom: 0.75rem;
+  font-size: 1.35rem;
+  color: var(--heading);
+}
+
+.boo-service-desc {
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  flex-grow: 1;
+}
+
+.boo-service-features {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1.75rem;
+  padding-top: 1rem;
+  border-top: 1px dashed var(--border);
+}
+
+.boo-service-features li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  color: var(--text-main);
+}
+
+.boo-service-features .feat-check {
+  color: var(--secondary);
+  flex-shrink: 0;
+}
+
+.boo-service-footer {
+  margin-top: auto;
+  padding-top: 1rem;
+  border-top: 1px solid var(--gray-100);
+}
+
+.boo-service-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--primary);
+}
+
+.boo-service-link .link-arrow {
+  transition: transform 0.2s ease;
+}
+
+.boo-service-card:hover .boo-service-link .link-arrow {
+  transform: translateX(4px);
+}
+
+[dir="rtl"] .boo-service-card:hover .boo-service-link .link-arrow {
+  transform: translateX(-4px) rotate(180deg);
+}

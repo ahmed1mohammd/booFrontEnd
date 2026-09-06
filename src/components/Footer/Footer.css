@@ -1,0 +1,243 @@
+.boo-footer {
+  background-color: var(--bg-darker);
+  color: #c4d7e8;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 0.9rem;
+}
+
+.boo-footer-top {
+  padding: 4.5rem 0 3.5rem 0;
+}
+
+.boo-footer-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 0.8fr 0.9fr 1.3fr;
+  gap: 3rem;
+}
+
+.boo-footer-brand-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.boo-footer-logo {
+  margin-bottom: 1.25rem;
+}
+
+.boo-footer-about {
+  color: #9cb4c9;
+  line-height: 1.65;
+  margin-bottom: 1.25rem;
+  font-size: 0.875rem;
+}
+
+.boo-footer-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  color: var(--secondary);
+  margin-bottom: 1.5rem;
+}
+
+.boo-footer-socials {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.boo-social-link {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-xs);
+  background-color: rgba(255, 255, 255, 0.08);
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition-fast);
+}
+
+.boo-social-link:hover {
+  background-color: var(--primary);
+  color: #FFFFFF;
+  transform: translateY(-2px);
+}
+
+/* Col Titles & Links */
+.boo-footer-title {
+  color: #FFFFFF;
+  font-size: 1.1rem;
+  margin-bottom: 1.35rem;
+  position: relative;
+  padding-bottom: 0.6rem;
+}
+
+.boo-footer-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 28px;
+  height: 2px;
+  background-color: var(--primary);
+  border-radius: 2px;
+}
+
+[dir="rtl"] .boo-footer-title::after {
+  left: auto;
+  right: 0;
+}
+
+.boo-footer-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.boo-footer-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #9cb4c9;
+  font-size: 0.875rem;
+  transition: var(--transition-fast);
+}
+
+.boo-footer-link .nav-arrow {
+  color: var(--primary);
+  transition: transform 0.2s ease;
+}
+
+[dir="rtl"] .boo-footer-link .nav-arrow {
+  transform: rotate(180deg);
+}
+
+.boo-footer-link:hover {
+  color: #FFFFFF;
+  transform: translateX(4px);
+}
+
+[dir="rtl"] .boo-footer-link:hover {
+  transform: translateX(-4px);
+}
+
+/* Contact Col */
+.boo-footer-contacts {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.boo-contact-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  color: #9cb4c9;
+  line-height: 1.5;
+  font-size: 0.875rem;
+}
+
+.boo-contact-item:hover {
+  color: #FFFFFF;
+}
+
+.boo-contact-item .contact-icon {
+  color: var(--primary);
+  flex-shrink: 0;
+  margin-top: 0.2rem;
+}
+
+.boo-contact-phones {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  padding: 0.75rem 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.boo-contact-phone-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #FFFFFF;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.boo-contact-phone-item:hover {
+  color: var(--secondary);
+}
+
+.boo-contact-phone-item .contact-icon {
+  color: var(--secondary);
+}
+
+.boo-footer-hours {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.8rem;
+}
+
+.hours-label {
+  color: #FFFFFF;
+  font-weight: 600;
+  margin-bottom: 0.2rem;
+}
+
+.hours-val {
+  color: #8da4b8;
+}
+
+/* Bottom Bar */
+.boo-footer-bottom {
+  background-color: #08121b;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 1.25rem 0;
+  font-size: 0.8125rem;
+}
+
+.boo-footer-bottom-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.boo-copyright {
+  color: #728a9e;
+  margin: 0;
+}
+
+.boo-footer-bottom-links {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #728a9e;
+}
+
+.boo-footer-bottom-links .dot {
+  color: var(--primary);
+}
+
+/* Responsive Footer */
+@media (max-width: 1024px) {
+  .boo-footer-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2.5rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .boo-footer-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .boo-footer-bottom-inner {
+    flex-direction: column;
+    text-align: center;
+  }
+}

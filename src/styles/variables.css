@@ -1,0 +1,60 @@
+:root {
+  /* Brand Core Colors (Exact requested palette) */
+  --primary: #00AEEF;
+  --secondary: #7EC24B;
+  --bg-main: #FFFFFF;
+  --text-main: #1C3D5A;
+  --heading: #333333;
+  --bg-alt: #E1F3FA;
+  --hover-green: #4B7330;
+  --border: #D9E1E6;
+  --bg-sidebar: #F9FAF5;
+
+  /* Refined Automotive Extensions */
+  --primary-dark: #0093ca;
+  --primary-hover: #0099d8;
+  --primary-light: #e6f6fc;
+  --secondary-light: #eef8e7;
+  --secondary-hover: #6ea940;
+  --text-muted: #536b82;
+  --text-subtle: #7e94a5;
+  --bg-card: #FFFFFF;
+  --bg-card-hover: #F8FBFC;
+  --bg-dark: #12283C;
+  --bg-darker: #0c1a27;
+
+  /* Neutral tones */
+  --gray-50: #f8fafc;
+  --gray-100: #f1f5f9;
+  --gray-200: #e2e8f0;
+  --gray-300: #cbd5e1;
+  --gray-700: #334155;
+  --gray-800: #1e293b;
+
+  /* Typography */
+  --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-heading: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+  --font-arabic: 'Cairo', 'Plus Jakarta Sans', sans-serif;
+
+  /* Shadows (Clean, subtle, corporate - no excessive blur) */
+  --shadow-xs: 0 1px 2px rgba(28, 61, 90, 0.05);
+  --shadow-sm: 0 2px 5px rgba(28, 61, 90, 0.06);
+  --shadow-md: 0 4px 14px rgba(28, 61, 90, 0.08);
+  --shadow-lg: 0 8px 24px rgba(28, 61, 90, 0.12);
+  --shadow-hover: 0 8px 20px rgba(0, 174, 239, 0.15);
+
+  /* Borders & Radius (Modern professional, avoids huge balloon radii) */
+  --radius-xs: 4px;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-pill: 9999px;
+
+  /* Layout & Transitions */
+  --max-width: 1280px;
+  --header-height: 80px;
+  --topbar-height: 42px;
+  --transition-fast: 0.18s ease;
+  --transition-normal: 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+}
