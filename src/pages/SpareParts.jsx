@@ -120,6 +120,7 @@ export default function SparePartsPage() {
           <div className="boo-store-cats-bar" role="tablist" aria-label="Product Categories">
             {categories.map((cat) => {
               const isActive = activeCategory === cat.id;
+              const hasCount = cat.count !== undefined && cat.count !== null && (typeof cat.count === 'string' || Number(cat.count) > 0);
               return (
                 <button
                   key={cat.id}
@@ -129,7 +130,11 @@ export default function SparePartsPage() {
                   onClick={() => handleCategoryChange(cat.id)}
                 >
                   <span>{cat.name}</span>
-                  {cat.count && <span style={{ opacity: 0.75, fontSize: '0.8rem' }}>({cat.count})</span>}
+                  {hasCount ? (
+                    <span style={{ opacity: 0.8, fontSize: '0.82rem', marginInlineStart: '0.35rem', fontWeight: '600' }}>
+                      ({cat.count})
+                    </span>
+                  ) : null}
                 </button>
               );
             })}

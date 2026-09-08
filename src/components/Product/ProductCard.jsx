@@ -10,13 +10,20 @@ export default function ProductCard({ product }) {
 
   if (!product) return null;
 
-  const mainImage = product.images ? product.images[0] : product.image;
+  const rawImage = product.images && product.images.length > 0 
+    ? (typeof product.images[0] === 'string' ? product.images[0] : product.images[0]?.url) 
+    : product.image;
+  const mainImage = rawImage || 'https://images.unsplash.com/photo-1486006920555-c77dce18193b?auto=format&fit=crop&w=800&q=80';
+
+  const isInStock = product.inStock !== undefined
+    ? Boolean(product.inStock)
+    : (product.stock === undefined || Number(product.stock) > 0 || Number(product.stockCount) > 0);
 
   return (
     <div className="boo-ecom-card">
       {/* Product Image & Stock Badge */}
       <div className="boo-ecom-card-img-wrap">
-        <Link to={`/spare-parts/${product.id}`} aria-label={`View ${product.name}`}>
+        <Link to={`/spare-parts/${product.id || product._id || product.sku}`} aria-label={`View ${product.name}`}>
           <img
             src={mainImage}
             alt={product.name}
@@ -26,18 +33,18 @@ export default function ProductCard({ product }) {
         </Link>
         <span
           className={`boo-ecom-stock-badge ${
-            product.inStock ? 'stock-in' : 'stock-out'
+            isInStock ? 'stock-in' : 'stock-out'
           }`}
         >
-          {product.inStock ? (
+          {isInStock ? (
             <>
               <Check size={12} />
-              <span>In Stock</span>
+              <span>{lang === 'ar' ? 'متوفر بالمخزن' : 'In Stock'}</span>
             </>
           ) : (
             <>
               <X size={12} />
-              <span>Out of Stock</span>
+              <span>{lang === 'ar' ? 'غير متوفر' : 'Out of Stock'}</span>
             </>
           )}
         </span>
@@ -50,7 +57,7 @@ export default function ProductCard({ product }) {
           <span className="boo-ecom-sku">SKU: {product.sku}</span>
         </div>
 
-        <Link to={`/spare-parts/${product.id}`}>
+        <Link to={`/spare-parts/${product.id || product._id || product.sku}`}>
           <h3 className="boo-ecom-title">{product.name}</h3>
         </Link>
 
@@ -62,7 +69,7 @@ export default function ProductCard({ product }) {
         <div className="boo-ecom-price-row">
           <div>
             <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)', display: 'block' }}>
-              Price / السعر
+              {lang === 'ar' ? 'السعر' : 'Price'}
             </span>
             <span className="boo-ecom-price">
               {product.price?.toLocaleString()} EGP
@@ -78,24 +85,24 @@ export default function ProductCard({ product }) {
         {/* Action Buttons: Add to Cart & View Details */}
         <div className="boo-ecom-card-actions">
           <Link
-            to={`/spare-parts/${product.id}`}
+            to={`/spare-parts/${product.id || product._id || product.sku}`}
             className="btn btn-outline btn-sm"
             style={{ padding: '0.55rem 0.75rem' }}
           >
             <Eye size={14} />
-            <span>View Details</span>
+            <span>{lang === 'ar' ? 'التفاصيل' : 'Details'}</span>
           </Link>
 
           <button
             type="button"
             className="btn btn-primary btn-sm"
             style={{ padding: '0.55rem 0.75rem' }}
-            disabled={!product.inStock}
+            disabled={!isInStock}
             onClick={() => addToCart(product, 1)}
             aria-label={`Add ${product.name} to cart`}
           >
             <ShoppingCart size={14} />
-            <span>Add to Cart</span>
+            <span>{lang === 'ar' ? 'أضف للسلة' : 'Add to Cart'}</span>
           </button>
         </div>
       </div>

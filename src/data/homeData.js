@@ -162,7 +162,7 @@ export const FEATURED_CARS = [
     engine: "1.5L Turbo 204 HP",
     status: "Available",
     featured: true,
-    image: "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&w=1000&q=80",
+    image: "/images/cars/mercedes-c200.jpg",
     tags: ["Import Ready", "Brand New", "Full Option"]
   },
   {
@@ -179,7 +179,7 @@ export const FEATURED_CARS = [
     engine: "2.0L TwinPower 184 HP",
     status: "Available",
     featured: true,
-    image: "https://images.unsplash.com/photo-1555215695-3004980ad54e?auto=format&fit=crop&w=1000&q=80",
+    image: "/images/cars/bmw-420i.jpg",
     tags: ["Certified Pre-Owned", "M Sport Package"]
   },
   {
@@ -196,7 +196,7 @@ export const FEATURED_CARS = [
     engine: "2.9L V6 Twin-Turbo 440 HP",
     status: "Available",
     featured: true,
-    image: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1000&q=80",
+    image: "/images/cars/porsche-macan-gts.jpg",
     tags: ["Custom Order", "Brand New", "GTS Spec"]
   },
   {
@@ -213,7 +213,7 @@ export const FEATURED_CARS = [
     engine: "2.0L TFSI 245 HP",
     status: "Available",
     featured: true,
-    image: "https://images.unsplash.com/photo-1603584173870-7f23fdae1b7a?auto=format&fit=crop&w=1000&q=80",
+    image: "/images/cars/audi-a6-sline.jpg",
     tags: ["Quattro AWD", "Agency Maintained"]
   },
   {
@@ -230,7 +230,7 @@ export const FEATURED_CARS = [
     engine: "1.4L TSI 150 HP",
     status: "Available",
     featured: true,
-    image: "https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?auto=format&fit=crop&w=1000&q=80",
+    image: "/images/cars/vw-tiguan-rline.jpg",
     tags: ["Brand New", "Panoramic Roof"]
   },
   {
@@ -247,7 +247,7 @@ export const FEATURED_CARS = [
     engine: "2.0L Turbocharged 250 HP",
     status: "Available",
     featured: true,
-    image: "https://images.unsplash.com/photo-1563720223185-11003d516935?auto=format&fit=crop&w=1000&q=80",
+    image: "/images/cars/range-rover-velar.jpg",
     tags: ["Luxury Spec", "Full Warranty"]
   }
 ];
@@ -272,7 +272,7 @@ export const SAMPLE_PARTS = [
     code: "BP-99824",
     price: "EGP 4,200",
     inStock: true,
-    image: "https://images.unsplash.com/photo-1486006920555-c77dce18193b?auto=format&fit=crop&w=600&q=80"
+    image: "/images/products/brembo-ceramic-pads.jpg"
   },
   {
     id: "part-2",
@@ -283,7 +283,7 @@ export const SAMPLE_PARTS = [
     code: "TB-44102",
     price: "EGP 28,500",
     inStock: true,
-    image: "https://images.unsplash.com/photo-1517524008697-84bbe3c3fd98?auto=format&fit=crop&w=600&q=80"
+    image: "/images/products/garrett-turbocharger.jpg"
   },
   {
     id: "part-3",
@@ -294,7 +294,7 @@ export const SAMPLE_PARTS = [
     code: "SUS-88210",
     price: "EGP 19,800",
     inStock: true,
-    image: "https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?auto=format&fit=crop&w=600&q=80"
+    image: "/images/products/bilstein-suspension.jpg"
   },
   {
     id: "part-4",
@@ -305,7 +305,7 @@ export const SAMPLE_PARTS = [
     code: "EL-55420",
     price: "EGP 11,300",
     inStock: true,
-    image: "https://images.unsplash.com/photo-1580273916550-e323be2ae537?auto=format&fit=crop&w=600&q=80"
+    image: "/images/products/bosch-alternator.jpg"
   },
   {
     id: "part-5",
@@ -316,7 +316,7 @@ export const SAMPLE_PARTS = [
     code: "FL-12009",
     price: "EGP 1,850",
     inStock: true,
-    image: "https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=600&q=80"
+    image: "/images/products/mann-filter-air.jpg"
   },
   {
     id: "part-6",
@@ -327,7 +327,7 @@ export const SAMPLE_PARTS = [
     code: "AC-33019",
     price: "EGP 3,600",
     inStock: true,
-    image: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=600&q=80"
+    image: "/images/products/bmw-m-carbon-mirror.jpg"
   }
 ];
 

@@ -102,6 +102,11 @@ export default function ProductDetails() {
     );
   }
 
+  const isInStock = product.inStock !== undefined
+    ? Boolean(product.inStock)
+    : (product.stock === undefined || Number(product.stock) > 0 || Number(product.stockCount) > 0);
+  const availableStock = product.stockCount || product.stock || 10;
+
   return (
     <div className="boo-pdp-page">
       {/* Breadcrumb Bar */}
@@ -137,19 +142,23 @@ export default function ProductDetails() {
                 </span>
                 <span
                   className={`boo-ecom-stock-badge ${
-                    product.inStock ? 'stock-in' : 'stock-out'
+                    isInStock ? 'stock-in' : 'stock-out'
                   }`}
                   style={{ position: 'static' }}
                 >
-                  {product.inStock ? (
+                  {isInStock ? (
                     <>
                       <Check size={13} />
-                      <span>In Stock ({product.stockCount} units available)</span>
+                      <span>
+                        {lang === 'ar'
+                          ? `متوفر بالمخزن (${availableStock} قطعة)`
+                          : `In Stock (${availableStock} units available)`}
+                      </span>
                     </>
                   ) : (
                     <>
                       <X size={13} />
-                      <span>Out of Stock</span>
+                      <span>{lang === 'ar' ? 'غير متوفر بالمخزن' : 'Out of Stock'}</span>
                     </>
                   )}
                 </span>
@@ -178,27 +187,38 @@ export default function ProductDetails() {
                 <div style={{ textAlign: 'right' }}>
                   <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem', color: 'var(--hover-green)', fontWeight: '700', fontSize: '0.85rem' }}>
                     <ShieldCheck size={16} />
-                    <span>BOO Guarantee</span>
+                    <span>100% Genuine OEM</span>
                   </div>
-                  <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>
-                    100% Genuine OEM Certified
-                  </div>
+                  <span style={{ display: 'block', fontSize: '0.8rem', color: 'var(--text-muted)' }}>
+                    Original Certified
+                  </span>
                 </div>
               </div>
 
-              {/* Short Description */}
-              <p className="boo-pdp-short-desc">
-                {product.shortDescription || product.description}
-              </p>
+              {/* Compatibility Preview Box */}
+              {product.compatibility && product.compatibility.length > 0 && (
+                <div className="boo-pdp-compat-box">
+                  <div style={{ fontSize: '0.82rem', fontWeight: '700', color: 'var(--primary)', marginBottom: '0.35rem' }}>
+                    Guaranteed Compatibility / التوافق المضمون:
+                  </div>
+                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.35rem' }}>
+                    {product.compatibility.map((c, i) => (
+                      <span key={i} className="boo-compat-pill">
+                        {c}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              )}
 
-              {/* Quantity Selector & Add to Cart Button */}
-              <div className="boo-pdp-action-row">
+              {/* Quantity & Add to Cart Controls */}
+              <div className="boo-pdp-actions-row">
                 <div className="boo-qty-selector">
                   <button
                     type="button"
                     className="boo-qty-btn"
                     onClick={handleDecreaseQty}
-                    disabled={quantity <= 1 || !product.inStock}
+                    disabled={quantity <= 1 || !isInStock}
                     aria-label="Decrease quantity"
                   >
                     -
@@ -208,7 +228,7 @@ export default function ProductDetails() {
                     type="button"
                     className="boo-qty-btn"
                     onClick={handleIncreaseQty}
-                    disabled={!product.inStock || quantity >= (product.stockCount || 10)}
+                    disabled={!isInStock || quantity >= availableStock}
                     aria-label="Increase quantity"
                   >
                     +
@@ -219,11 +239,13 @@ export default function ProductDetails() {
                   type="button"
                   className="btn btn-primary btn-lg"
                   style={{ flex: 1 }}
-                  disabled={!product.inStock}
+                  disabled={!isInStock}
                   onClick={handleAddToCart}
                 >
                   <ShoppingCart size={18} />
-                  <span>Add to Cart ({((product.price || 0) * quantity).toLocaleString()} EGP)</span>
+                  <span>
+                    {lang === 'ar' ? 'أضف إلى السلة' : 'Add to Cart'} ({((product.price || 0) * quantity).toLocaleString()} EGP)
+                  </span>
                 </button>
               </div>
 

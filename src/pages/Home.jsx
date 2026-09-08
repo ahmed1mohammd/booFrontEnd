@@ -3,7 +3,6 @@ import HeroCarousel from '../components/Hero/HeroCarousel';
 import ServicesSection from '../components/Services/ServicesSection';
 import AboutSection from '../components/About/AboutSection';
 import FeaturedCars from '../components/Cars/FeaturedCars';
-import SpareParts from '../components/Parts/SpareParts';
 import MaintenanceSection from '../components/Maintenance/MaintenanceSection';
 import WhyBOO from '../components/WhyBOO/WhyBOO';
 import CTASection from '../components/CTA/CTASection';
@@ -23,16 +22,13 @@ export default function Home({ onSelectCar, onOpenBooking }) {
       {/* 4. Featured Cars */}
       <FeaturedCars onSelectCar={onSelectCar} />
 
-      {/* 5. Spare Parts */}
-      <SpareParts />
-
-      {/* 6. Maintenance */}
+      {/* 5. Maintenance */}
       <MaintenanceSection onOpenBooking={onOpenBooking} />
 
-      {/* 7. Why Choose BOO */}
+      {/* 6. Why Choose BOO */}
       <WhyBOO />
 
-      {/* 8. CTA */}
+      {/* 7. CTA */}
       <CTASection />
     </div>
   );
