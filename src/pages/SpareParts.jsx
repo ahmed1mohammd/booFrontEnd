@@ -129,8 +129,22 @@ export default function SparePartsPage() {
           {/* Category Filter Pills Bar (Horizontal scroll on mobile) */}
           <div className="boo-store-cats-bar" role="tablist" aria-label="Product Categories">
             {categories.map((cat) => {
-              const isActive = activeCategory === cat.id;
+              const catIdentifier = cat.slug || cat.id;
+              const isActive = activeCategory === cat.id || activeCategory === cat.slug || (activeCategory === 'brake' && cat.slug === 'brake');
               const hasCount = cat.count !== undefined && cat.count !== null && (typeof cat.count === 'string' || Number(cat.count) > 0);
+              
+              const catNamesAr = {
+                all: 'جميع الأقسام',
+                brake: 'منظومة الفرامل',
+                brakes: 'منظومة الفرامل',
+                filters: 'الفلاتر والمرشحات',
+                engine: 'أجزاء المحرك',
+                electrical: 'الكهرباء والإشعال',
+                suspension: 'العفشة والمساعدين',
+                accessories: 'الإكسسوارات'
+              };
+              const label = (lang === 'ar' && catNamesAr[catIdentifier]) ? catNamesAr[catIdentifier] : cat.name;
+
               return (
                 <button
                   key={cat.id}
@@ -139,7 +153,7 @@ export default function SparePartsPage() {
                   className={`boo-store-cat-pill ${isActive ? 'is-active' : ''}`}
                   onClick={() => handleCategoryChange(cat.id)}
                 >
-                  <span>{cat.name}</span>
+                  <span>{label}</span>
                   {hasCount ? (
                     <span style={{ opacity: 0.8, fontSize: '0.82rem', marginInlineStart: '0.35rem', fontWeight: '600' }}>
                       ({cat.count})
