@@ -19,6 +19,8 @@ import { productsApi } from '../api/productsApi';
 import { useCart } from '../context/CartContext';
 import { useLanguage } from '../context/LanguageContext';
 
+import CarLoader from '../components/common/CarLoader';
+
 export default function ProductDetails() {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -35,10 +37,19 @@ export default function ProductDetails() {
     try {
       setLoading(true);
       setError(null);
-      const res = await productsApi.getSparePart(id);
-      if (res.success) {
+      const timeoutCap = new Promise((resolve) => setTimeout(() => resolve({ timeout: true }), 3000));
+      const fetchReq = productsApi.getSparePart(id);
+
+      const res = await Promise.race([fetchReq, timeoutCap]);
+      if (res && res.success) {
         setProduct(res.data);
         setRelated(res.related || []);
+      } else if (res && res.timeout) {
+        const fastRes = await fetchReq;
+        if (fastRes?.success) {
+          setProduct(fastRes.data);
+          setRelated(fastRes.related || []);
+        }
       }
     } catch (err) {
       setError(err.message || 'Product not found.');
@@ -71,18 +82,12 @@ export default function ProductDetails() {
 
   if (loading) {
     return (
-      <div className="section" style={{ minHeight: '60vh' }}>
+      <div className="section" style={{ minHeight: '60vh', display: 'flex', alignItems: 'center' }}>
         <div className="container">
-          <div className="boo-pdp-container">
-            <div className="skeleton-box" style={{ height: '420px', width: '100%' }} />
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-              <div className="skeleton-box" style={{ height: '20px', width: '120px' }} />
-              <div className="skeleton-box" style={{ height: '36px', width: '90%' }} />
-              <div className="skeleton-box" style={{ height: '24px', width: '180px' }} />
-              <div className="skeleton-box" style={{ height: '80px', width: '100%' }} />
-              <div className="skeleton-box" style={{ height: '100px', width: '100%' }} />
-            </div>
-          </div>
+          <CarLoader
+            text={lang === 'ar' ? 'جاري فحص تفاصيل القطعة والمواصفات' : 'Loading Part Specifications'}
+            subtext={lang === 'ar' ? 'التحقق من التوافق الفني وتوافر المخزون...' : 'Verifying fitment and stock level...'}
+          />
         </div>
       </div>
     );

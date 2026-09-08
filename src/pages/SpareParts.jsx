@@ -3,6 +3,7 @@ import { useSearchParams } from 'react-router-dom';
 import { Search, Sparkles, Filter, Cpu, Disc, Sliders, Zap, Check, AlertCircle } from 'lucide-react';
 import ProductCard from '../components/Product/ProductCard';
 import ProductGridSkeleton from '../components/Product/ProductGridSkeleton';
+import CarLoader from '../components/common/CarLoader';
 import EmptyState from '../components/common/EmptyState';
 import ErrorState from '../components/common/ErrorState';
 import { productsApi } from '../api/productsApi';
@@ -52,18 +53,27 @@ export default function SparePartsPage() {
     setSearchParams(newParams);
   };
 
-  // Fetch products when category, search, or sort changes
+  // Fetch products when category, search, or sort changes (Max 3s cap)
   const fetchProducts = async () => {
     try {
       setLoading(true);
       setError(null);
-      const res = await productsApi.getSpareParts({
+
+      // Force max 3.0s loading duration cap
+      const timeoutCap = new Promise((resolve) => setTimeout(() => resolve({ timeout: true }), 3000));
+      const fetchReq = productsApi.getSpareParts({
         category: activeCategory,
         search: debouncedSearch,
         sort: sortBy
       });
-      if (res.success) {
+
+      const res = await Promise.race([fetchReq, timeoutCap]);
+      if (res && res.success) {
         setProducts(res.data);
+      } else if (res && res.timeout) {
+        // Fallback after 3s cap
+        const fastRes = await fetchReq;
+        if (fastRes?.success) setProducts(fastRes.data);
       }
     } catch (err) {
       setError(err.message || 'Unable to load spare parts catalog.');
@@ -174,7 +184,10 @@ export default function SparePartsPage() {
 
           {/* 3. Product Grid / Skeletons / States */}
           {loading ? (
-            <ProductGridSkeleton count={6} />
+            <CarLoader
+              text={lang === 'ar' ? 'جاري تجهيز قطع الغيار المعتمدة' : 'Loading OEM Spare Parts'}
+              subtext={lang === 'ar' ? 'يتم فحص مخزون السيرفر والأسعار المحدثة...' : 'Connecting to live inventory & pricing...'}
+            />
           ) : error ? (
             <ErrorState
               title="Unable to load spare parts."
