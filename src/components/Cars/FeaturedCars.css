@@ -228,3 +228,11 @@
     overflow-x: auto;
   }
 }
+
+@media (max-width: 480px) {
+  .boo-car-specs {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.65rem;
+  }
+}
+
