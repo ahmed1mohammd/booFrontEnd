@@ -45,7 +45,7 @@
   }
 
   .section {
-    padding: 3rem 0;
+    padding: 2.75rem 0;
   }
 
   .section-header {
@@ -71,8 +71,14 @@
   .boo-form-card,
   .boo-summary-box,
   .boo-checkout-layout > div,
-  .boo-cart-layout > div {
+  .boo-cart-layout > div,
+  .boo-page-card,
+  .boo-card-responsive {
     padding: 1.25rem 1rem !important;
+  }
+
+  .boo-page-header {
+    padding: 2.75rem 0 2.25rem 0 !important;
   }
 }
 
@@ -84,7 +90,7 @@
   }
 
   .section {
-    padding: 2.25rem 0;
+    padding: 2rem 0;
   }
 
   .section-title {
@@ -98,6 +104,10 @@
   .btn-block-mobile {
     width: 100% !important;
   }
+
+  .boo-page-card {
+    padding: 1rem 0.85rem !important;
+  }
 }
 
 /* Small Mobile (360px and below) */
@@ -110,5 +120,10 @@
     padding-left: 0.75rem;
     padding-right: 0.75rem;
   }
+
+  .boo-page-card {
+    padding: 0.85rem 0.65rem !important;
+  }
 }
+
 

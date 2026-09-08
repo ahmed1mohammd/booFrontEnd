@@ -9,7 +9,7 @@ export default function AboutPage() {
   return (
     <div className="boo-about-page">
       {/* Page Header */}
-      <div style={{ backgroundColor: 'var(--bg-dark)', color: '#FFFFFF', padding: '4rem 0 3.5rem 0' }}>
+      <div className="boo-page-header">
         <div className="container">
           <span className="section-badge" style={{ backgroundColor: 'rgba(0,174,239,0.2)', color: '#FFFFFF' }}>
             <Sparkles size={13} />
@@ -40,7 +40,7 @@ export default function AboutPage() {
                 We bridge international automotive markets with local vehicle owners, offering custom vehicle import directly to your doorstep, a carefully vetted inventory of certified cars, guaranteed OEM spare parts, and a high-tech maintenance center equipped for complex diagnostics.
               </p>
 
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '1.25rem' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(130px, 1fr))', gap: '1rem' }}>
                 {ABOUT_DATA.stats.map((st, i) => (
                   <div key={i} style={{ backgroundColor: 'var(--bg-sidebar)', padding: '1.25rem', borderRadius: 'var(--radius-sm)', border: '1px solid var(--border)' }}>
                     <div style={{ fontSize: '1.75rem', fontWeight: '800', color: 'var(--primary)', fontFamily: 'var(--font-heading)' }}>

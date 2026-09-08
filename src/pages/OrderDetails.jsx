@@ -78,7 +78,7 @@ export default function OrderDetails() {
   return (
     <div className="boo-order-details-page">
       {/* Header */}
-      <div style={{ backgroundColor: 'var(--bg-dark)', color: '#FFFFFF', padding: '3.5rem 0 3rem 0' }}>
+      <div className="boo-page-header" style={{ padding: '3.5rem 0 3rem 0' }}>
         <div className="container">
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '1.5rem' }}>
             <div>
@@ -110,16 +110,7 @@ export default function OrderDetails() {
       <div className="section" style={{ backgroundColor: 'var(--bg-main)', paddingTop: '2.5rem' }}>
         <div className="container" style={{ maxWidth: '960px' }}>
           {/* Order Visual Timeline Progression */}
-          <div
-            style={{
-              backgroundColor: '#FFFFFF',
-              border: '1px solid var(--border)',
-              borderRadius: 'var(--radius-md)',
-              padding: '2rem 2.5rem',
-              marginBottom: '2.5rem',
-              boxShadow: 'var(--shadow-xs)'
-            }}
-          >
+          <div className="boo-page-card" style={{ marginBottom: '2.5rem' }}>
             <h3 style={{ fontSize: '1.25rem', marginBottom: '0.25rem', color: 'var(--heading)' }}>
               Order Status & Tracking
             </h3>
@@ -210,16 +201,7 @@ export default function OrderDetails() {
           </div>
 
           {/* Ordered Products Table */}
-          <div
-            style={{
-              backgroundColor: '#FFFFFF',
-              border: '1px solid var(--border)',
-              borderRadius: 'var(--radius-md)',
-              padding: '2rem',
-              boxShadow: 'var(--shadow-xs)',
-              marginBottom: '2.5rem'
-            }}
-          >
+          <div className="boo-page-card" style={{ marginBottom: '2.5rem' }}>
             <h3 style={{ fontSize: '1.3rem', marginBottom: '1.25rem', color: 'var(--heading)' }}>
               Ordered Items
             </h3>

@@ -31,7 +31,7 @@ export default function Cars({ onSelectCar }) {
   return (
     <div className="boo-cars-page">
       {/* Page Header */}
-      <div style={{ backgroundColor: 'var(--bg-dark)', color: '#FFFFFF', padding: '4rem 0 3.5rem 0' }}>
+      <div className="boo-page-header">
         <div className="container">
           <span className="section-badge" style={{ backgroundColor: 'rgba(0,174,239,0.2)', color: '#FFFFFF' }}>
             <Sparkles size={13} />

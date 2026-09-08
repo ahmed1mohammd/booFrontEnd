@@ -28,7 +28,7 @@ export default function Cart() {
   return (
     <div className="boo-cart-page">
       {/* Header Banner */}
-      <div style={{ backgroundColor: 'var(--bg-dark)', color: '#FFFFFF', padding: '3.5rem 0 3rem 0' }}>
+      <div className="boo-page-header" style={{ padding: '3.5rem 0 3rem 0' }}>
         <div className="container">
           <h1 style={{ color: '#FFFFFF', marginBottom: '0.5rem' }}>Shopping Cart</h1>
           <p style={{ color: '#c4d7e8', margin: 0 }}>
@@ -41,15 +41,7 @@ export default function Cart() {
         <div className="container">
           <div className="boo-cart-layout">
             {/* Left Column: Cart Items List */}
-            <div
-              style={{
-                backgroundColor: '#FFFFFF',
-                border: '1px solid var(--border)',
-                borderRadius: 'var(--radius-md)',
-                padding: '2rem',
-                boxShadow: 'var(--shadow-xs)'
-              }}
-            >
+            <div className="boo-page-card">
               <div
                 style={{
                   display: 'flex',
@@ -79,7 +71,7 @@ export default function Cart() {
                     <img src={item.image} alt={item.name} className="boo-cart-item-img" />
 
                     {/* Name & SKU */}
-                    <div>
+                    <div className="boo-cart-item-info">
                       <Link to={`/spare-parts/${item.id}`} className="boo-cart-item-title">
                         {item.name}
                       </Link>
@@ -90,7 +82,7 @@ export default function Cart() {
                     </div>
 
                     {/* Quantity Controls [-] N [+] */}
-                    <div>
+                    <div className="boo-cart-item-qty">
                       <div className="boo-qty-selector" style={{ transform: 'scale(0.95)' }}>
                         <button
                           type="button"

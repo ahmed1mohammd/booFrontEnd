@@ -37,7 +37,7 @@ export default function Contact() {
   return (
     <div className="boo-contact-page">
       {/* Page Header */}
-      <div style={{ backgroundColor: 'var(--bg-dark)', color: '#FFFFFF', padding: '4rem 0 3.5rem 0' }}>
+      <div className="boo-page-header">
         <div className="container">
           <span className="section-badge" style={{ backgroundColor: 'rgba(0,174,239,0.2)', color: '#FFFFFF' }}>
             <Sparkles size={13} />
@@ -56,7 +56,7 @@ export default function Contact() {
 
       <div className="section" style={{ backgroundColor: 'var(--bg-main)' }}>
         <div className="container">
-          <div className="grid-2" style={{ gap: '3.5rem', alignItems: 'flex-start' }}>
+          <div className="grid-2" style={{ alignItems: 'flex-start' }}>
             {/* Left: Contact Info Cards */}
             <div>
               <span className="section-badge badge-green">Direct Channels</span>
@@ -191,15 +191,7 @@ export default function Contact() {
             </div>
 
             {/* Right: Contact Form */}
-            <div
-              style={{
-                backgroundColor: '#FFFFFF',
-                border: '1px solid var(--border)',
-                borderRadius: 'var(--radius-lg)',
-                padding: '2.5rem',
-                boxShadow: 'var(--shadow-sm)'
-              }}
-            >
+            <div className="boo-page-card" style={{ borderRadius: 'var(--radius-lg)', boxShadow: 'var(--shadow-sm)' }}>
               <h3 style={{ fontSize: '1.65rem', marginBottom: '0.5rem' }}>Send Us a Message</h3>
               <p style={{ color: 'var(--text-muted)', marginBottom: '2rem', fontSize: '0.95rem' }}>
                 Fill in your details and our team will get back to you within 24 hours.

@@ -58,13 +58,11 @@ export default function PaymentSuccess() {
       <div className="section" style={{ backgroundColor: 'var(--bg-main)', minHeight: '75vh', display: 'flex', alignItems: 'center' }}>
         <div className="container">
           <div
+            className="boo-page-card"
             style={{
               maxWidth: '680px',
               margin: '0 auto',
-              backgroundColor: '#FFFFFF',
-              border: '1px solid var(--border)',
               borderRadius: 'var(--radius-lg)',
-              padding: '3.5rem 2.5rem',
               textAlign: 'center',
               boxShadow: '0 12px 36px rgba(28, 61, 90, 0.08)'
             }}
@@ -105,7 +103,7 @@ export default function PaymentSuccess() {
                 backgroundColor: 'var(--bg-sidebar)',
                 border: '1px solid var(--border)',
                 borderRadius: 'var(--radius-md)',
-                padding: '1.75rem',
+                padding: '1.25rem',
                 textAlign: 'left',
                 marginBottom: '2.25rem'
               }}
@@ -139,7 +137,7 @@ export default function PaymentSuccess() {
                 </div>
               </div>
 
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', fontSize: '0.875rem' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '1rem', fontSize: '0.875rem' }}>
                 <div>
                   <span style={{ color: 'var(--text-muted)', display: 'block' }}>Customer Name:</span>
                   <strong style={{ color: 'var(--heading)' }}>{customerName}</strong>
@@ -150,7 +148,7 @@ export default function PaymentSuccess() {
                   <strong style={{ color: 'var(--heading)' }}>{customerPhone}</strong>
                 </div>
 
-                <div style={{ gridColumn: 'span 2' }}>
+                <div style={{ gridColumn: '1 / -1' }}>
                   <span style={{ color: 'var(--text-muted)', display: 'block' }}>Delivery Address:</span>
                   <strong style={{ color: 'var(--heading)' }}>{addressFormatted}</strong>
                 </div>

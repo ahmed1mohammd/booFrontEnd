@@ -36,13 +36,12 @@ export default function PaymentFailed() {
       <div className="section" style={{ backgroundColor: 'var(--bg-main)', minHeight: '70vh', display: 'flex', alignItems: 'center' }}>
         <div className="container">
           <div
+            className="boo-page-card"
             style={{
               maxWidth: '620px',
               margin: '0 auto',
-              backgroundColor: '#FFFFFF',
               border: '1px solid #fee2e2',
               borderRadius: 'var(--radius-lg)',
-              padding: '3.5rem 2.5rem',
               textAlign: 'center',
               boxShadow: '0 12px 36px rgba(220, 38, 38, 0.08)'
             }}

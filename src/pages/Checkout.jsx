@@ -150,7 +150,7 @@ export default function Checkout() {
   return (
     <div className="boo-checkout-page">
       {/* Header */}
-      <div style={{ backgroundColor: 'var(--bg-dark)', color: '#FFFFFF', padding: '3.5rem 0 3rem 0' }}>
+      <div className="boo-page-header" style={{ padding: '3.5rem 0 3rem 0' }}>
         <div className="container">
           <h1 style={{ color: '#FFFFFF', marginBottom: '0.5rem' }}>Checkout & Delivery</h1>
           <p style={{ color: '#c4d7e8', margin: 0 }}>
@@ -183,15 +183,7 @@ export default function Checkout() {
           <form onSubmit={handleCheckoutSubmit} noValidate>
             <div className="boo-checkout-layout">
               {/* Left Column: Customer Information & Delivery Address */}
-              <div
-                style={{
-                  backgroundColor: '#FFFFFF',
-                  border: '1px solid var(--border)',
-                  borderRadius: 'var(--radius-md)',
-                  padding: '2.25rem',
-                  boxShadow: 'var(--shadow-xs)'
-                }}
-              >
+              <div className="boo-page-card">
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', marginBottom: '1.75rem' }}>
                   <Truck size={22} color="var(--primary)" />
                   <h2 style={{ fontSize: '1.4rem', margin: 0 }}>Customer & Delivery Information</h2>

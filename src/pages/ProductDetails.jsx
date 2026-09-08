@@ -279,16 +279,7 @@ export default function ProductDetails() {
           </div>
 
           {/* Product Description & Specifications Details */}
-          <div
-            style={{
-              backgroundColor: '#FFFFFF',
-              border: '1px solid var(--border)',
-              borderRadius: 'var(--radius-md)',
-              padding: '2.5rem',
-              marginBottom: '4rem',
-              boxShadow: 'var(--shadow-xs)'
-            }}
-          >
+          <div className="boo-page-card" style={{ marginBottom: '4rem' }}>
             <div style={{ marginBottom: '2.5rem' }}>
               <h2 style={{ fontSize: '1.5rem', marginBottom: '1rem', color: 'var(--heading)' }}>
                 Product Description
