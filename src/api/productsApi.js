@@ -1,6 +1,14 @@
 import { SPARE_PARTS_CATALOG, SPARE_PARTS_CATEGORIES } from '../data/sparePartsProducts';
 
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'https://boobackend-production.up.railway.app/api';
+
+const DEFAULT_PART_IMAGES = {
+  engine: 'https://images.unsplash.com/photo-1486006920555-c77dce18193b?auto=format&fit=crop&w=800&q=80',
+  brake: 'https://images.unsplash.com/photo-1600790142055-619df03207e6?auto=format&fit=crop&w=800&q=80',
+  suspension: 'https://images.unsplash.com/photo-1517524008697-84bbe3c3fd98?auto=format&fit=crop&w=800&q=80',
+  electrical: 'https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=800&q=80',
+  filters: 'https://images.unsplash.com/photo-1580273916550-e323be2ae537?auto=format&fit=crop&w=800&q=80'
+};
 
 /**
  * Products API Service
@@ -17,33 +25,46 @@ export const productsApi = {
       if (category && category !== 'all') params.append('category', category);
       if (search && search.trim()) params.append('search', search.trim());
       if (sort) params.append('sort', sort);
+      params.append('limit', '100');
 
       const res = await fetch(`${API_BASE_URL}/products?${params.toString()}`);
       if (res.ok) {
         const json = await res.json();
         if (json.success && Array.isArray(json.data)) {
           // Normalize items for frontend component consumption
-          const normalized = json.data.map((item) => ({
-            id: item._id || item.id,
-            name: item.name,
-            sku: item.sku,
-            category: item.category?.slug || item.category?.name || item.category,
-            brand: item.brand,
-            carModel: item.compatibility ? item.compatibility.join(', ') : item.brand,
-            price: item.price,
-            stock: item.stock !== undefined ? item.stock : 10,
-            stockCount: item.stock !== undefined ? item.stock : 10,
-            inStock: item.stock !== undefined ? item.stock > 0 : (item.inStock !== undefined ? Boolean(item.inStock) : true),
-            image: item.images && item.images.length > 0 ? item.images[0].url : 'https://images.unsplash.com/photo-1486006920555-c77dce18193b?auto=format&fit=crop&w=800&q=80',
-            images: item.images && item.images.length > 0 ? item.images.map((img) => img.url) : [],
-            badge: item.badge || (item.stock < 5 && item.stock > 0 ? 'Low Stock' : 'In Stock'),
-            rating: item.rating || 4.9,
-            reviewsCount: item.reviewsCount || 12,
-            isOem: item.isOem !== undefined ? item.isOem : true,
-            featured: item.featured || false,
-            description: item.description,
-            compatibility: item.compatibility || []
-          }));
+          const normalized = json.data.map((item) => {
+            const catSlug = item.category?.slug || item.categorySlug || (typeof item.category === 'string' ? item.category : 'engine');
+            const defaultImg = DEFAULT_PART_IMAGES[catSlug] || 'https://images.unsplash.com/photo-1486006920555-c77dce18193b?auto=format&fit=crop&w=800&q=80';
+            const imgUrl = (item.images && item.images.length > 0)
+              ? (typeof item.images[0] === 'string' ? item.images[0] : item.images[0]?.url)
+              : defaultImg;
+
+            return {
+              id: item._id || item.id,
+              name: item.name,
+              sku: item.sku,
+              category: catSlug,
+              categoryName: item.category?.name || item.categoryName || catSlug,
+              brand: item.brand,
+              model: item.model || (item.compatibility ? item.compatibility[0] : ''),
+              carModel: item.compatibility ? item.compatibility.join(', ') : item.brand,
+              price: item.price,
+              stock: item.stock !== undefined ? item.stock : 10,
+              stockCount: item.stock !== undefined ? item.stock : 10,
+              inStock: item.stock !== undefined ? item.stock > 0 : (item.inStock !== undefined ? Boolean(item.inStock) : true),
+              image: imgUrl || defaultImg,
+              images: (item.images && item.images.length > 0)
+                ? item.images.map((img) => (typeof img === 'string' ? img : img?.url)).filter(Boolean)
+                : [imgUrl || defaultImg],
+              badge: item.badge || (item.stock < 5 && item.stock > 0 ? 'Low Stock' : 'In Stock'),
+              rating: item.rating || 4.9,
+              reviewsCount: item.reviewsCount || 12,
+              isOem: item.isOem !== undefined ? item.isOem : true,
+              featured: item.featured || false,
+              description: item.description,
+              compatibility: item.compatibility || []
+            };
+          });
           return {
             success: true,
             data: normalized,
