@@ -52,45 +52,21 @@ export default function Cars({ onSelectCar }) {
       <div className="section" style={{ backgroundColor: 'var(--bg-main)', paddingTop: '2.5rem' }}>
         <div className="container">
           {/* Controls Bar */}
-          <div
-            style={{
-              backgroundColor: '#FFFFFF',
-              border: '1px solid var(--border)',
-              borderRadius: 'var(--radius-md)',
-              padding: '1.25rem 1.5rem',
-              marginBottom: '2.5rem',
-              boxShadow: 'var(--shadow-xs)',
-              display: 'flex',
-              flexWrap: 'wrap',
-              gap: '1.25rem',
-              alignItems: 'center',
-              justifyContent: 'space-between'
-            }}
-          >
+          <div className="boo-cars-controls-bar">
             {/* Search */}
-            <div style={{ position: 'relative', minWidth: '240px', flex: '1 1 240px' }}>
-              <Search
-                size={18}
-                style={{
-                  position: 'absolute',
-                  left: '0.85rem',
-                  top: '50%',
-                  transform: 'translateY(-50%)',
-                  color: 'var(--text-muted)'
-                }}
-              />
+            <div className="boo-cars-search-wrap">
+              <Search size={18} className="boo-cars-search-icon" />
               <input
                 type="text"
                 placeholder={lang === 'ar' ? 'ابحث عن ماركة أو موديل...' : 'Search make, model...'}
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="form-input"
-                style={{ paddingLeft: '2.5rem' }}
+                className="boo-cars-search-input"
               />
             </div>
 
             {/* Brand Filter */}
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', flex: '0 1 auto' }}>
+            <div className="boo-cars-filter-group">
               <label style={{ fontSize: '0.85rem', fontWeight: '600', whiteSpace: 'nowrap' }}>
                 {lang === 'ar' ? 'الماركة:' : 'Make:'}
               </label>
@@ -107,7 +83,7 @@ export default function Cars({ onSelectCar }) {
             </div>
 
             {/* Body Type */}
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', flex: '0 1 auto' }}>
+            <div className="boo-cars-filter-group">
               <label style={{ fontSize: '0.85rem', fontWeight: '600', whiteSpace: 'nowrap' }}>
                 {lang === 'ar' ? 'الهيكل:' : 'Body:'}
               </label>
@@ -124,7 +100,7 @@ export default function Cars({ onSelectCar }) {
             </div>
 
             {/* Sort */}
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', flex: '0 1 auto' }}>
+            <div className="boo-cars-filter-group">
               <label style={{ fontSize: '0.85rem', fontWeight: '600', whiteSpace: 'nowrap' }}>
                 {lang === 'ar' ? 'الترتيب:' : 'Sort:'}
               </label>

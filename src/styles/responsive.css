@@ -23,32 +23,33 @@
 /* Tablet Landscape & Small Desktop (1024px) */
 @media (max-width: 1024px) {
   .section {
-    padding: 4rem 0;
+    padding: 3.5rem 0;
   }
   
   .grid-3 {
     grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
   }
 
   .grid-2 {
     grid-template-columns: 1fr;
-    gap: 2rem;
+    gap: 1.75rem;
   }
 }
 
 /* Tablet Portrait (768px - 1023px) */
 @media (max-width: 768px) {
   :root {
-    --header-height: 70px;
+    --header-height: 65px;
     --topbar-height: 38px;
   }
 
   .section {
-    padding: 3.25rem 0;
+    padding: 3rem 0;
   }
 
   .section-header {
-    margin-bottom: 2.25rem;
+    margin-bottom: 2rem;
   }
 
   .grid-3, .grid-4 {
@@ -56,9 +57,22 @@
     gap: 1.25rem;
   }
   
+  .grid-2 {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
   .btn-lg {
-    padding: 0.85rem 1.75rem;
-    font-size: 0.98rem;
+    padding: 0.85rem 1.5rem;
+    font-size: 0.95rem;
+  }
+
+  /* Form and page card padding on mobile */
+  .boo-form-card,
+  .boo-summary-box,
+  .boo-checkout-layout > div,
+  .boo-cart-layout > div {
+    padding: 1.25rem 1rem !important;
   }
 }
 
@@ -70,22 +84,26 @@
   }
 
   .section {
-    padding: 2.75rem 0;
+    padding: 2.25rem 0;
   }
 
-  .btn {
-    width: 100%;
+  .section-title {
+    font-size: 1.5rem;
   }
 
-  .btn-sm {
-    width: auto;
+  .section-subtitle {
+    font-size: 0.95rem;
+  }
+
+  .btn-block-mobile {
+    width: 100% !important;
   }
 }
 
 /* Small Mobile (360px and below) */
 @media (max-width: 360px) {
   html {
-    font-size: 15px;
+    font-size: 14.5px;
   }
 
   .container {
@@ -93,3 +111,4 @@
     padding-right: 0.75rem;
   }
 }
+

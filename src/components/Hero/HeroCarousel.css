@@ -239,22 +239,24 @@
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .boo-hero-carousel {
-    min-height: 520px;
+    min-height: 480px;
     height: auto;
   }
 
   .boo-hero-content-container {
-    padding-top: 3.5rem;
-    padding-bottom: 5.5rem;
+    padding-top: 2.5rem;
+    padding-bottom: 4.5rem;
   }
 
   .boo-hero-controls-bar {
-    bottom: 1.25rem;
+    bottom: 1rem;
+    padding: 0 1rem;
   }
 
   .boo-hero-buttons {
     flex-direction: column;
     width: 100%;
+    gap: 0.75rem;
   }
 
   .boo-hero-buttons .btn {
@@ -265,3 +267,29 @@
     display: none;
   }
 }
+
+@media (max-width: 500px) {
+  .boo-hero-carousel {
+    min-height: 450px;
+  }
+  .boo-hero-title {
+    font-size: 1.75rem;
+    line-height: 1.2;
+    margin-bottom: 0.75rem;
+  }
+  .boo-hero-desc {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+  }
+  .boo-hero-counter {
+    font-size: 0.9rem;
+    padding: 0.25rem 0.6rem;
+  }
+  .boo-hero-control-btn,
+  .boo-hero-nav-arrow {
+    width: 36px;
+    height: 36px;
+  }
+}
+
