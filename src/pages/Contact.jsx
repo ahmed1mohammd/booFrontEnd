@@ -62,48 +62,64 @@ export default function Contact() {
               <span className="section-badge badge-green">Direct Channels</span>
               <h2 style={{ marginBottom: '1.5rem' }}>Visit or Reach Out to Us</h2>
 
-              {/* Physical Location Card */}
-              <div
-                style={{
-                  backgroundColor: 'var(--bg-sidebar)',
-                  border: '1px solid var(--border)',
-                  borderRadius: 'var(--radius-md)',
-                  padding: '1.5rem',
-                  marginBottom: '1.5rem',
-                  display: 'flex',
-                  gap: '1rem',
-                  alignItems: 'flex-start'
-                }}
-              >
-                <div
-                  style={{
-                    width: '44px',
-                    height: '44px',
-                    backgroundColor: 'var(--primary-light)',
-                    color: 'var(--primary)',
-                    borderRadius: 'var(--radius-sm)',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    flexShrink: 0
-                  }}
-                >
-                  <MapPin size={22} />
-                </div>
-                <div>
-                  <h4 style={{ marginBottom: '0.35rem' }}>Headquarters & Service Center</h4>
-                  <p style={{ margin: '0 0 0.5rem 0', color: 'var(--text-main)', fontWeight: '600' }}>
-                    {address}
-                  </p>
-                  <a
-                    href={addressUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={{ color: 'var(--primary)', fontWeight: '700', fontSize: '0.875rem' }}
+              {/* Branches Grid / List */}
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', marginBottom: '1.5rem' }}>
+                <h4 style={{ margin: '0 0 0.5rem 0', color: 'var(--heading)', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                  <MapPin size={20} color="var(--primary)" />
+                  <span>{lang === 'ar' ? 'فروعنا ومعارضنا في مصر' : 'Our Branches & Service Centers'}</span>
+                </h4>
+
+                {(BRAND_CONFIG.contact.branches || []).map((branch) => (
+                  <div
+                    key={branch.id}
+                    style={{
+                      backgroundColor: 'var(--bg-sidebar)',
+                      border: branch.isHQ ? '2px solid var(--primary)' : '1px solid var(--border)',
+                      borderRadius: 'var(--radius-md)',
+                      padding: '1.25rem',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      gap: '0.4rem',
+                      position: 'relative'
+                    }}
                   >
-                    Open in Google Maps &rarr;
-                  </a>
-                </div>
+                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '0.5rem' }}>
+                      <h4 style={{ margin: 0, fontSize: '1rem', color: 'var(--heading)', fontWeight: '700' }}>
+                        {lang === 'ar' ? branch.nameAr : branch.nameEn}
+                      </h4>
+                      {branch.isHQ && (
+                        <span style={{ fontSize: '0.72rem', backgroundColor: 'var(--primary)', color: '#FFFFFF', padding: '0.2rem 0.5rem', borderRadius: '4px', fontWeight: '700' }}>
+                          {lang === 'ar' ? 'الفرع الرئيسي' : 'HQ'}
+                        </span>
+                      )}
+                    </div>
+                    
+                    <p style={{ margin: 0, color: 'var(--text-main)', fontSize: '0.9rem', lineHeight: '1.5' }}>
+                      {lang === 'ar' ? branch.addressAr : branch.addressEn}
+                    </p>
+
+                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: '0.5rem', flexWrap: 'wrap', gap: '0.5rem' }}>
+                      <a
+                        href={branch.mapsUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style={{ color: 'var(--primary)', fontWeight: '700', fontSize: '0.85rem', display: 'flex', alignItems: 'center', gap: '0.25rem' }}
+                      >
+                        <span>{lang === 'ar' ? 'عرض على خرائط جوجل' : 'Google Maps'}</span>
+                        <span>&rarr;</span>
+                      </a>
+                      {branch.phone && (
+                        <a
+                          href={`tel:${branch.phone}`}
+                          style={{ color: 'var(--heading)', fontWeight: '600', fontSize: '0.85rem', display: 'flex', alignItems: 'center', gap: '0.35rem' }}
+                        >
+                          <Phone size={13} color="var(--primary)" />
+                          <span>{branch.phone}</span>
+                        </a>
+                      )}
+                    </div>
+                  </div>
+                ))}
               </div>
 
               {/* Phones Card */}

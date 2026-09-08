@@ -12,18 +12,18 @@ export default function TopContactBar() {
   return (
     <div className="boo-topbar">
       <div className="container boo-topbar-inner">
-        {/* Left: Physical Address */}
+        {/* Left: Physical Address / Branches */}
         <div className="boo-topbar-address">
           <a
-            href={addressUrl}
-            target="_blank"
-            rel="noopener noreferrer"
+            href="/contact"
             className="boo-topbar-link"
-            title="View location on Google Maps"
+            title={lang === 'ar' ? 'فروعنا في مصر: شبين الكوم، الإسكندرية، دمياط، العبور' : 'Our Branches: Shebin El-Kom, Alexandria, Damietta, Obour'}
           >
             <MapPin className="boo-topbar-icon" size={14} />
             <span className="boo-topbar-text">
-              {lang === 'ar' ? t.topBar.address : address}
+              {lang === 'ar' 
+                ? 'فروعنا: شبين الكوم (الرئيسي) • الإسكندرية • دمياط الجديدة • العبور' 
+                : 'Branches: Shebin El-Kom (HQ) • Alexandria • New Damietta • Obour'}
             </span>
           </a>
         </div>

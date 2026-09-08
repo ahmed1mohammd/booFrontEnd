@@ -9,6 +9,57 @@
  * GET /api/maintenance
  */
 
+export const BRANCHES = [
+  {
+    id: "branch-shebin",
+    nameEn: "Shebin El-Kom (Headquarters & Service Center)",
+    nameAr: "الفرع الرئيسي ومركز الصيانة - شبين الكوم",
+    cityEn: "Shebin El-Kom, Menoufia",
+    cityAr: "شبين الكوم، المنوفية",
+    addressEn: "19 El-Galaa El-Bahary Street, Shebin El-Kom, Menoufia",
+    addressAr: "١٩ شارع الجلاء البحري، شبين الكوم، محافظة المنوفية",
+    mapsUrl: "https://maps.google.com/?q=19+El-Galaa+El-Bahary+Street,+Shebin+El-Kom,+Menoufia",
+    isHQ: true,
+    phone: "01122559066"
+  },
+  {
+    id: "branch-alex",
+    nameEn: "Alexandria Branch (San Stefano)",
+    nameAr: "فرع الإسكندرية - سان ستفانو",
+    cityEn: "San Stefano, Alexandria",
+    cityAr: "سان ستفانو، الإسكندرية",
+    addressEn: "Abd El-Salam Aref Street, San Stefano, 1st El-Raml, Alexandria Governorate",
+    addressAr: "شارع عبد السلام عارف، سان ستفانو، قسم أول الرمل، محافظة الإسكندرية",
+    mapsUrl: "https://maps.google.com/?q=شارع+عبد+السلام+عارف+سان+ستفانو+قسم+أول+الرمل+محافظة+الإسكندرية",
+    isHQ: false,
+    phone: "01141801505"
+  },
+  {
+    id: "branch-damietta",
+    nameEn: "New Damietta Branch (Al Khaledeya Mall)",
+    nameAr: "فرع دمياط الجديدة - مول الخالدية",
+    cityEn: "New Damietta",
+    cityAr: "دمياط الجديدة",
+    addressEn: "Al Khaledeya Mall - Al Majd Al Noeyya District, Beside Hattab Pharmacy, New Damietta",
+    addressAr: "مول الخالدية - حي المجد النوعيه بجوار صيدلية حطاب، دمياط الجديدة",
+    mapsUrl: "https://maps.google.com/?q=مول+الخالدية+حي+المجد+دمياط+الجديدة",
+    isHQ: false,
+    phone: "01102624105"
+  },
+  {
+    id: "branch-obour",
+    nameEn: "New Obour & Qalyubia Branch",
+    nameAr: "فرع العبور الجديدة - القليوبية",
+    cityEn: "New Obour City, Qalyubia",
+    cityAr: "العبور الجديدة، القليوبية",
+    addressEn: "New Obour City, Obour, Qalyubia Governorate 6363352",
+    addressAr: "العبور الجديدة، العبور، محافظة القليوبية 6363352",
+    mapsUrl: "https://maps.google.com/?q=العبور+الجديدة+العبور+محافظة+القليوبية",
+    isHQ: false,
+    phone: "01122559066"
+  }
+];
+
 export const BRAND_CONFIG = {
   name: "BOO",
   fullName: "BOO Automotive",
@@ -17,6 +68,7 @@ export const BRAND_CONFIG = {
   contact: {
     address: "19 El-Galaa El-Bahary Street, Shebin El-Kom, Menoufia",
     addressUrl: "https://maps.google.com/?q=19+El-Galaa+El-Bahary+Street,+Shebin+El-Kom,+Menoufia",
+    branches: BRANCHES,
     phones: [
       { display: "01122559066", raw: "01122559066" },
       { display: "01141801505", raw: "01141801505" },

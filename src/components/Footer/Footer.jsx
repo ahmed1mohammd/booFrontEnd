@@ -128,19 +128,30 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Col 4: Contact Info */}
+          {/* Col 4: Contact Info & Branches */}
           <div className="boo-footer-col boo-footer-contact-col">
             <h4 className="boo-footer-title">{t.footer.contactInfo}</h4>
             <div className="boo-footer-contacts">
-              <a
-                href={addressUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="boo-contact-item"
-              >
-                <MapPin size={18} className="contact-icon" />
-                <span>{address}</span>
-              </a>
+              <div style={{ marginBottom: '0.75rem' }}>
+                <span style={{ fontSize: '0.78rem', color: 'var(--primary)', fontWeight: '700', textTransform: 'uppercase', display: 'block', marginBottom: '0.25rem' }}>
+                  {lang === 'ar' ? 'فروعنا في مصر:' : 'Our Branches in Egypt:'}
+                </span>
+                <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.4rem', fontSize: '0.82rem' }}>
+                  {(BRAND_CONFIG.contact.branches || []).map((b) => (
+                    <li key={b.id}>
+                      <a
+                        href={b.mapsUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style={{ color: 'var(--footer-text, #c2d8eb)', display: 'flex', alignItems: 'flex-start', gap: '0.35rem', lineHeight: '1.4' }}
+                      >
+                        <MapPin size={13} color="var(--primary)" style={{ flexShrink: 0, marginTop: '2px' }} />
+                        <span><strong>{lang === 'ar' ? b.cityAr : b.cityEn}:</strong> {lang === 'ar' ? b.addressAr : b.addressEn}</span>
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
 
               <div className="boo-contact-phones">
                 {phones.map((p, idx) => (
