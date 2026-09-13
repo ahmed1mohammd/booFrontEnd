@@ -1,4 +1,4 @@
-const API_BASE_URL = import.meta.env.VITE_API_URL || (typeof window !== 'undefined' && window.location.hostname === 'localhost' ? 'http://localhost:5000/api' : 'https://boobackend-production.up.railway.app/api');
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'https://boobackend-production.up.railway.app/api';
 
 const DEFAULT_PART_IMAGES = {
   engine: 'https://images.unsplash.com/photo-1486006920555-c77dce18193b?auto=format&fit=crop&w=800&q=80',
