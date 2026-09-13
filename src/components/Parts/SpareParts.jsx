@@ -1,17 +1,33 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Cpu, Disc, Sliders, Zap, Filter, Sparkles, Check, ArrowRight, Search, ShieldCheck } from 'lucide-react';
-import { SPARE_PARTS_CATEGORIES, SAMPLE_PARTS } from '../../data/homeData';
+import { Cpu, Disc, Sliders, Zap, Filter, Sparkles, Check, ArrowRight, ShieldCheck } from 'lucide-react';
+import { productsApi } from '../../api/productsApi';
 import { useLanguage } from '../../context/LanguageContext';
 import './SpareParts.css';
 
-export default function SpareParts({
-  categories = SPARE_PARTS_CATEGORIES,
-  parts = SAMPLE_PARTS,
-  onInquirePart
-}) {
-  const { t } = useLanguage();
+export default function SpareParts() {
+  const { t, lang } = useLanguage();
+  const [categories, setCategories] = useState([]);
+  const [parts, setParts] = useState([]);
   const [activeCategory, setActiveCategory] = useState('all');
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    // Load categories
+    productsApi.getCategories().then((res) => {
+      if (res.success) setCategories(res.data);
+    });
+  }, []);
+
+  useEffect(() => {
+    setLoading(true);
+    productsApi.getSpareParts({ category: activeCategory, limit: 6 }).then((res) => {
+      if (res.success) {
+        setParts(res.data);
+      }
+      setLoading(false);
+    });
+  }, [activeCategory]);
 
   const getCategoryIcon = (iconName) => {
     switch (iconName) {
@@ -32,10 +48,6 @@ export default function SpareParts({
     }
   };
 
-  const filteredParts = activeCategory === 'all'
-    ? parts
-    : parts.filter((p) => p.category === activeCategory);
-
   return (
     <section className="section section-alt boo-parts-section" id="spare-parts">
       <div className="container">
@@ -53,69 +65,83 @@ export default function SpareParts({
         </div>
 
         {/* Categories Bar */}
-        <div className="boo-parts-categories-wrap">
-          <div className="boo-parts-categories">
-            {categories.map((cat) => (
-              <button
-                key={cat.id}
-                className={`boo-cat-btn ${activeCategory === cat.id ? 'is-active' : ''}`}
-                onClick={() => setActiveCategory(cat.id)}
-              >
-                {cat.icon && getCategoryIcon(cat.icon)}
-                <span>{cat.name}</span>
-                <span className="cat-count">{cat.count}</span>
-              </button>
-            ))}
+        {categories.length > 0 && (
+          <div className="boo-parts-categories-wrap">
+            <div className="boo-parts-categories">
+              {categories.map((cat) => (
+                <button
+                  key={cat.id || cat.slug}
+                  className={`boo-cat-btn ${activeCategory === (cat.slug || cat.id) ? 'is-active' : ''}`}
+                  onClick={() => setActiveCategory(cat.slug || cat.id)}
+                >
+                  {cat.icon && getCategoryIcon(cat.icon)}
+                  <span>{cat.name}</span>
+                  {cat.count !== undefined && <span className="cat-count">{cat.count}</span>}
+                </button>
+              ))}
+            </div>
           </div>
-        </div>
+        )}
 
         {/* Sample Parts Cards Grid */}
         <div className="grid-3 boo-parts-grid">
-          {filteredParts.slice(0, 6).map((part) => (
-            <div key={part.id} className="boo-part-card card">
-              <div className="boo-part-img-box">
-                <img
-                  src={part.image}
-                  alt={part.name}
-                  className="boo-part-img"
-                  loading="lazy"
-                />
-                <span className="boo-part-badge">
-                  <ShieldCheck size={13} />
-                  <span>100% Genuine</span>
-                </span>
-              </div>
-
-              <div className="boo-part-content">
-                <div className="boo-part-meta">
-                  <span className="boo-part-brand">{part.brand}</span>
-                  <span className="boo-part-code">OEM: {part.code}</span>
+          {loading ? (
+            <div style={{ gridColumn: '1 / -1', textAlign: 'center', padding: '3rem 0', color: 'var(--text-muted)' }}>
+              Loading spare parts catalog...
+            </div>
+          ) : parts.length === 0 ? (
+            <div style={{ gridColumn: '1 / -1', textAlign: 'center', padding: '3rem 0', color: 'var(--text-muted)' }}>
+              {lang === 'ar' ? 'لا توجد قطع غيار في هذا القسم حالياً' : 'No spare parts found in this category'}
+            </div>
+          ) : (
+            parts.slice(0, 6).map((part) => (
+              <div key={part.id} className="boo-part-card card">
+                <div className="boo-part-img-box">
+                  <img
+                    src={part.image}
+                    alt={part.name}
+                    className="boo-part-img"
+                    loading="lazy"
+                  />
+                  <span className="boo-part-badge">
+                    <ShieldCheck size={13} />
+                    <span>100% Genuine</span>
+                  </span>
                 </div>
 
-                <h3 className="boo-part-name">{part.name}</h3>
-                <p className="boo-part-compat">
-                  <strong>Compatibility:</strong> {part.compatibility}
-                </p>
-
-                <div className="boo-part-footer">
-                  <div className="boo-part-price-box">
-                    <span className="boo-part-price">{part.price}</span>
-                    <span className="boo-part-stock">
-                      <Check size={12} />
-                      <span>{t.parts.inStock}</span>
-                    </span>
+                <div className="boo-part-content">
+                  <div className="boo-part-meta">
+                    <span className="boo-part-brand">{part.brand}</span>
+                    <span className="boo-part-code">SKU: {part.sku}</span>
                   </div>
 
-                  <Link
-                    to={`/spare-parts?code=${part.code}`}
-                    className="btn btn-primary btn-sm"
-                  >
-                    <span>{t.parts.inquireCTA}</span>
-                  </Link>
+                  <h3 className="boo-part-name">{part.name}</h3>
+                  {part.compatibility && part.compatibility.length > 0 && (
+                    <p className="boo-part-compat">
+                      <strong>Compatibility:</strong> {Array.isArray(part.compatibility) ? part.compatibility.join(', ') : part.compatibility}
+                    </p>
+                  )}
+
+                  <div className="boo-part-footer">
+                    <div className="boo-part-price-box">
+                      <span className="boo-part-price">{part.price?.toLocaleString()} EGP</span>
+                      <span className="boo-part-stock">
+                        <Check size={12} />
+                        <span>{t.parts.inStock}</span>
+                      </span>
+                    </div>
+
+                    <Link
+                      to={`/spare-parts/${part.id || part.sku}`}
+                      className="btn btn-primary btn-sm"
+                    >
+                      <span>{t.parts.inquireCTA}</span>
+                    </Link>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))
+          )}
         </div>
 
         {/* Action Button */}

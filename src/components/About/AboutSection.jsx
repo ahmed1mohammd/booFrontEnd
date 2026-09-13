@@ -1,12 +1,28 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ShieldCheck, CheckCircle, Award, ArrowRight, Star } from 'lucide-react';
 import { ABOUT_DATA } from '../../data/homeData';
+import { productsApi } from '../../api/productsApi';
 import { useLanguage } from '../../context/LanguageContext';
 import './AboutSection.css';
 
-export default function AboutSection({ data = ABOUT_DATA }) {
+export default function AboutSection({ data: initialData = ABOUT_DATA }) {
   const { t } = useLanguage();
+  const [data, setData] = useState(initialData);
+
+  useEffect(() => {
+    productsApi.getContent().then((res) => {
+      if (res.success && res.data?.about) {
+        setData({
+          ...initialData,
+          ...res.data.about,
+          image: res.data.about.image?.url || initialData.image,
+          stats: res.data.about.stats?.length > 0 ? res.data.about.stats : initialData.stats,
+          trustIndicators: res.data.about.trustIndicators?.length > 0 ? res.data.about.trustIndicators : initialData.trustIndicators
+        });
+      }
+    });
+  }, []);
 
   const getIndicatorIcon = (id) => {
     switch (id) {
@@ -40,7 +56,7 @@ export default function AboutSection({ data = ABOUT_DATA }) {
                 </div>
                 <div className="floating-badge-content">
                   <span className="floating-badge-title">100% Guaranteed</span>
-                  <span className="floating-badge-subtitle">Certified Vehicle & Parts Quality</span>
+                  <span className="floating-badge-subtitle">Certified Parts & Maintenance Quality</span>
                 </div>
               </div>
             </div>

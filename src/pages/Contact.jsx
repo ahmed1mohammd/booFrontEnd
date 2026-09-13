@@ -16,7 +16,13 @@ import { useLanguage } from '../context/LanguageContext';
 export default function Contact() {
   const { lang, t } = useLanguage();
   const [searchParams] = useSearchParams();
-  const initialType = searchParams.get('type') === 'import' ? 'Car Import' : 'General Inquiry';
+  const initialType = searchParams.get('type') === 'parts'
+    ? 'Spare Parts'
+    : searchParams.get('type') === 'accessories'
+    ? 'Car Accessories'
+    : searchParams.get('type') === 'maintenance'
+    ? 'Maintenance'
+    : 'General Inquiry';
 
   const [formSent, setFormSent] = useState(false);
   const [formData, setFormData] = useState({
@@ -272,10 +278,10 @@ export default function Contact() {
                       onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
                     >
                       <option value="General Inquiry">General Inquiry</option>
-                      <option value="Car Import">Car Import Consultation</option>
-                      <option value="Car Purchase">Car Purchase / Showroom</option>
                       <option value="Spare Parts">Spare Parts Order</option>
+                      <option value="Car Accessories">Car Accessories</option>
                       <option value="Maintenance">Maintenance & Service</option>
+                      <option value="Custom Sourcing">Custom OEM Parts Sourcing</option>
                     </select>
                   </div>
 

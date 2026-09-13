@@ -4,7 +4,7 @@ import { ShoppingCart, Eye, Check, X, ShieldCheck } from 'lucide-react';
 import { useCart } from '../../context/CartContext';
 import { useLanguage } from '../../context/LanguageContext';
 
-export default function ProductCard({ product }) {
+export default function ProductCard({ product, basePath = '/spare-parts' }) {
   const { addToCart } = useCart();
   const { lang } = useLanguage();
 
@@ -19,11 +19,13 @@ export default function ProductCard({ product }) {
     ? Boolean(product.inStock)
     : (product.stock === undefined || Number(product.stock) > 0 || Number(product.stockCount) > 0);
 
+  const productLink = `${basePath}/${product.id || product._id || product.sku}`;
+
   return (
     <div className="boo-ecom-card">
       {/* Product Image & Stock Badge */}
       <div className="boo-ecom-card-img-wrap">
-        <Link to={`/spare-parts/${product.id || product._id || product.sku}`} aria-label={`View ${product.name}`}>
+        <Link to={productLink} aria-label={`View ${product.name}`}>
           <img
             src={mainImage}
             alt={product.name}
@@ -57,7 +59,7 @@ export default function ProductCard({ product }) {
           <span className="boo-ecom-sku">SKU: {product.sku}</span>
         </div>
 
-        <Link to={`/spare-parts/${product.id || product._id || product.sku}`}>
+        <Link to={productLink}>
           <h3 className="boo-ecom-title">{product.name}</h3>
         </Link>
 
@@ -85,7 +87,7 @@ export default function ProductCard({ product }) {
         {/* Action Buttons: Add to Cart & View Details */}
         <div className="boo-ecom-card-actions">
           <Link
-            to={`/spare-parts/${product.id || product._id || product.sku}`}
+            to={productLink}
             className="btn btn-outline btn-sm"
             style={{ padding: '0.55rem 0.75rem' }}
           >

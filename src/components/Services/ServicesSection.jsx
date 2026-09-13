@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Ship, Car, Cog, Wrench, ArrowRight, CheckCircle2 } from 'lucide-react';
+import { Cog, Sparkles, Package, Wrench, ArrowRight, CheckCircle2 } from 'lucide-react';
 import { SERVICES_LIST } from '../../data/homeData';
 import { useLanguage } from '../../context/LanguageContext';
 import './ServicesSection.css';
@@ -10,16 +10,16 @@ export default function ServicesSection({ services = SERVICES_LIST }) {
 
   const getIcon = (iconName) => {
     switch (iconName) {
-      case 'Ship':
-        return <Ship size={32} />;
-      case 'Car':
-        return <Car size={32} />;
       case 'Cog':
         return <Cog size={32} />;
+      case 'Sparkles':
+        return <Sparkles size={32} />;
+      case 'Package':
+        return <Package size={32} />;
       case 'Wrench':
         return <Wrench size={32} />;
       default:
-        return <Car size={32} />;
+        return <Sparkles size={32} />;
     }
   };
 
@@ -39,8 +39,8 @@ export default function ServicesSection({ services = SERVICES_LIST }) {
           </p>
         </div>
 
-        {/* 4 Service Cards Grid */}
-        <div className="grid-4 boo-services-grid">
+        {/* 3 Service Cards Grid */}
+        <div className="grid-3 boo-services-grid">
           {services.map((service, index) => (
             <div key={service.id} className="boo-service-card card">
               <div className="boo-service-icon-wrap">

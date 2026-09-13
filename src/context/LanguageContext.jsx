@@ -6,13 +6,13 @@ export const translations = {
   en: {
     nav: {
       home: 'Home',
-      cars: 'Cars',
       spareParts: 'Spare Parts',
+      accessories: 'Accessories',
       maintenance: 'Maintenance',
       about: 'About Us',
       contact: 'Contact',
       contactUsCTA: 'Contact Us',
-      searchPlaceholder: 'Search cars, parts, maintenance...'
+      searchPlaceholder: 'Search spare parts, accessories, maintenance...'
     },
     topBar: {
       address: '19 El-Galaa El-Bahary Street, Shebin El-Kom, Menoufia',
@@ -20,15 +20,14 @@ export const translations = {
     },
     hero: {
       slideCounter: 'Slide',
-      exploreCars: 'Explore Cars',
-      viewCars: 'View Cars',
-      exploreParts: 'Explore Parts',
+      exploreParts: 'Explore Spare Parts',
+      exploreAccessories: 'Explore Accessories',
       bookService: 'Book a Service'
     },
     services: {
       sectionBadge: 'What We Do',
       sectionTitle: 'Our Automotive Services',
-      sectionSubtitle: 'Comprehensive vehicle solutions crafted for reliability, performance, and complete driving satisfaction.',
+      sectionSubtitle: 'Specialized spare parts, premium accessories, and certified maintenance crafted for reliability and performance.',
       learnMore: 'Learn More'
     },
     about: {
@@ -36,27 +35,24 @@ export const translations = {
       heading: 'Your Trusted Automotive Partner',
       learnMore: 'Learn More About BOO',
       quality: 'Quality',
-      qualityDesc: 'Rigorous standards for every vehicle and spare part we supply.',
+      qualityDesc: 'Rigorous standards for every spare part, accessory, and service we supply.',
       reliability: 'Reliability',
       reliabilityDesc: 'Proven track record with transparent guarantees and dependable delivery.',
       service: 'Professional Service',
       serviceDesc: 'Certified automotive engineers and dedicated customer support advisors.'
     },
-    cars: {
-      badge: 'Our Inventory',
-      title: 'Featured Cars',
-      subtitle: 'Explore some of our available vehicles selected for high performance and exceptional condition.',
+    accessories: {
+      badge: 'Premium Accessories',
+      title: 'Car Accessories',
+      subtitle: 'Elevate your vehicle with premium styling, protection, and high-tech automotive accessories.',
       viewDetails: 'View Details',
-      allCars: 'Browse All Inventory',
-      zeroKm: 'Zero km',
-      filterAll: 'All Makes',
-      filterSedan: 'Sedan',
-      filterSUV: 'SUV',
-      filterCoupe: 'Coupé'
+      browseCTA: 'Browse Accessories',
+      inStock: 'In Stock',
+      category: 'Category'
     },
     parts: {
       badge: 'Genuine Parts',
-      title: 'Spare Parts & Accessories',
+      title: 'Spare Parts',
       subtitle: 'Reliable automotive components and OEM parts engineered for durability and peak road safety.',
       browseCTA: 'Browse Spare Parts',
       inquireCTA: 'Request Specific Part',
@@ -73,16 +69,16 @@ export const translations = {
     why: {
       badge: 'Why Choose Us',
       title: 'Why Choose BOO?',
-      subtitle: 'We combine international sourcing capabilities, precision technical engineering, and dedicated customer care.'
+      subtitle: 'We combine genuine components sourcing, precision technical engineering, and dedicated customer care.'
     },
     cta: {
       heading: 'Looking for the Right Automotive Solution?',
-      desc: 'Whether you need a car, spare parts or professional maintenance, BOO is ready to help.',
+      desc: 'Whether you need genuine spare parts, car accessories, or professional maintenance, BOO is ready to help.',
       contactBtn: 'Contact Us',
       servicesBtn: 'Explore Services'
     },
     footer: {
-      aboutCompany: 'BOO provides integrated automotive solutions including car import, vehicle sales, genuine spare parts, and certified maintenance across Egypt.',
+      aboutCompany: 'BOO provides high-quality genuine spare parts, premium car accessories, and certified maintenance services across Egypt.',
       quickLinks: 'Quick Links',
       services: 'Services',
       contactInfo: 'Contact Information',
@@ -92,13 +88,13 @@ export const translations = {
   ar: {
     nav: {
       home: 'الرئيسية',
-      cars: 'السيارات',
       spareParts: 'قطع الغيار',
+      accessories: 'الإكسسوارات',
       maintenance: 'الصيانة',
       about: 'من نحن',
       contact: 'اتصل بنا',
       contactUsCTA: 'تواصل معنا',
-      searchPlaceholder: 'ابحث عن سيارات، قطع غيار، صيانة...'
+      searchPlaceholder: 'ابحث عن قطع غيار، إكسسوارات، صيانة...'
     },
     topBar: {
       address: '١٩ شارع الجلاء البحري، شبين الكوم، المنوفية',
@@ -106,43 +102,39 @@ export const translations = {
     },
     hero: {
       slideCounter: 'شريحة',
-      exploreCars: 'استكشف السيارات',
-      viewCars: 'عرض السيارات',
       exploreParts: 'استكشف قطع الغيار',
+      exploreAccessories: 'استكشف الإكسسوارات',
       bookService: 'احجز صيانة'
     },
     services: {
       sectionBadge: 'خدماتنا',
-      sectionTitle: 'خدمات السيارات المتكاملة',
-      sectionSubtitle: 'حلول سيارات متكاملة صممت لتوفر لك أعلى مستويات الاعتمادية والأداء.',
+      sectionTitle: 'خدماتنا المتخصصة',
+      sectionSubtitle: 'قطع غيار أصلية، إكسسوارات متميزة، وخدمات صيانة احترافية معتمدة لأعلى مستويات الاعتمادية والأداء.',
       learnMore: 'المزيد من التفاصيل'
     },
     about: {
       badge: 'عن شركة BOO',
-      heading: 'شريكك الموثوق في عالم السيارات',
+      heading: 'شريكك الموثوق لقطع الغيار والصيانة',
       learnMore: 'اعرف المزيد عن BOO',
       quality: 'الجودة',
-      qualityDesc: 'أعلى معايير الفحص الدقيق لكل سيارة وقطعة غيار نوفرها.',
+      qualityDesc: 'أعلى معايير الجودة والفحص الدقيق لقطع الغيار والإكسسوارات وخدمات الصيانة.',
       reliability: 'الاعتمادية',
       reliabilityDesc: 'سجل حافل بالثقة مع ضمانات واضحة والتزام تام بمواعيد التسليم.',
       service: 'خدمة احترافية',
       serviceDesc: 'مهندسون وفنيون معتمدون وفريق دعم متخصص في خدمتك دائماً.'
     },
-    cars: {
-      badge: 'معرض السيارات',
-      title: 'السيارات المميزة',
-      subtitle: 'استكشف نخبة من أفضل سياراتنا المتاحة بحالة استثنائية وأعلى المواصفات.',
+    accessories: {
+      badge: 'إكسسوارات متميزة',
+      title: 'إكسسوارات السيارات',
+      subtitle: 'ارتقِ بتجربة قيادتك مع أفضل إكسسوارات العناية والأناقة والحماية والإلكترونيات.',
       viewDetails: 'عرض التفاصيل',
-      allCars: 'تصفح كل السيارات',
-      zeroKm: 'زيرو كم',
-      filterAll: 'جميع الماركات',
-      filterSedan: 'سيدان',
-      filterSUV: 'دفع رباعي SUV',
-      filterCoupe: 'كوبيه'
+      browseCTA: 'تصفح الإكسسوارات',
+      inStock: 'متوفر',
+      category: 'القسم'
     },
     parts: {
       badge: 'قطع غيار أصلية',
-      title: 'قطع الغيار والاكسسوارات',
+      title: 'قطع الغيار الأصلية',
       subtitle: 'مكونات وقطع غيار أصلية ومضمونة لتحقيق أعلى مستويات الأمان والأداء.',
       browseCTA: 'تصفح قطع الغيار',
       inquireCTA: 'طلب قطعة محددة',
@@ -159,16 +151,16 @@ export const translations = {
     why: {
       badge: 'لماذا BOO',
       title: 'لماذا تختار BOO؟',
-      subtitle: 'نجمع بين قدرات الاستيراد العالمي والخبرة الهندسية الدقيقة وخدمة العملاء المتميزة.'
+      subtitle: 'نجمع بين توفير القطع الأصلية والخبرة الهندسية الدقيقة وخدمة العملاء المتميزة.'
     },
     cta: {
-      heading: 'تبحث عن الحل المناسب لسيارتك؟',
-      desc: 'سواء كنت تبحث عن استيراد سيارة أو شراء سيارة أو قطع غيار أصلية أو صيانة احترافية، BOO في خدمتك.',
+      heading: 'تبحث عن القطعة المناسبة أو صيانة لسيارتك؟',
+      desc: 'سواء كنت تبحث عن قطع غيار أصلية، إكسسوارات مميزة، أو صيانة احترافية، BOO في خدمتك.',
       contactBtn: 'تواصل معنا',
       servicesBtn: 'استكشف الخدمات'
     },
     footer: {
-      aboutCompany: 'تقدم شركة BOO حلولاً متكاملة للسيارات تشمل الاستيراد والبيع وتوفير قطع الغيار الأصلية وخدمات الصيانة المعتمدة في مصر.',
+      aboutCompany: 'تقدم شركة BOO قطع الغيار الأصلية، وإكسسوارات السيارات المتميزة، وخدمات الصيانة المعتمدة في مصر.',
       quickLinks: 'روابط سريعة',
       services: 'الخدمات',
       contactInfo: 'بيانات التواصل',

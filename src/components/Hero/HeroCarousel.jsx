@@ -2,15 +2,26 @@ import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import { ChevronLeft, ChevronRight, ArrowRight, Pause, Play, Sparkles } from 'lucide-react';
 import { HERO_SLIDES } from '../../data/homeData';
+import { productsApi } from '../../api/productsApi';
 import { useLanguage } from '../../context/LanguageContext';
 import './HeroCarousel.css';
 
-export default function HeroCarousel({ slides = HERO_SLIDES }) {
+export default function HeroCarousel({ slides: initialSlides = HERO_SLIDES }) {
   const { lang, t } = useLanguage();
+  const [slides, setSlides] = useState(initialSlides);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(true);
   const [isPausedByUser, setIsPausedByUser] = useState(false);
-  const totalSlides = slides.length;
+
+  useEffect(() => {
+    productsApi.getSlides().then((res) => {
+      if (res.success && res.data.length > 0) {
+        setSlides(res.data);
+      }
+    });
+  }, []);
+
+  const totalSlides = slides.length || 1;
 
   // Touch tracking for mobile swipe
   const touchStartXRef = useRef(0);

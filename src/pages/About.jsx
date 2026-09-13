@@ -20,8 +20,8 @@ export default function AboutPage() {
           </h1>
           <p style={{ color: '#c2d8eb', maxWidth: '650px', margin: 0, fontSize: '1.05rem' }}>
             {lang === 'ar'
-              ? 'تأسست شركة BOO لتقديم منظومة شاملة تشمل استيراد وبيع السيارات وقطع الغيار الأصلية وخدمات الصيانة المعتمدة.'
-              : 'BOO provides integrated automotive solutions including car import, vehicle sales, genuine spare parts, and professional maintenance.'}
+              ? 'تأسست شركة BOO لتقديم منظومة شاملة تشمل قطع الغيار الأصلية، وإكسسوارات السيارات المميزة، وخدمات الصيانة المعتمدة.'
+              : 'BOO provides integrated automotive solutions including genuine spare parts, premium car accessories, and professional maintenance.'}
           </p>
         </div>
       </div>
@@ -32,12 +32,12 @@ export default function AboutPage() {
           <div className="grid-2" style={{ alignItems: 'center', marginBottom: '4.5rem' }}>
             <div>
               <span className="section-badge badge-green">Our Vision & Commitment</span>
-              <h2 style={{ marginBottom: '1.25rem' }}>Integrated Automotive Excellence Across Egypt</h2>
+              <h2 style={{ marginBottom: '1.25rem' }}>Automotive Excellence & Care Across Egypt</h2>
               <p style={{ fontSize: '1.05rem', color: 'var(--text-main)', lineHeight: '1.7', marginBottom: '1rem' }}>
-                At BOO, we understand that purchasing and maintaining a vehicle requires absolute trust, technical transparency, and premium service.
+                At BOO, we understand that maintaining your vehicle requires absolute trust, technical transparency, and genuine components.
               </p>
               <p style={{ fontSize: '0.95rem', color: 'var(--text-muted)', lineHeight: '1.65', marginBottom: '1.75rem' }}>
-                We bridge international automotive markets with local vehicle owners, offering custom vehicle import directly to your doorstep, a carefully vetted inventory of certified cars, guaranteed OEM spare parts, and a high-tech maintenance center equipped for complex diagnostics.
+                We provide car owners and professional workshops across Egypt with guaranteed OEM spare parts, premium styling accessories, and a high-tech maintenance center equipped for complex diagnostics and repairs.
               </p>
 
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(130px, 1fr))', gap: '1rem' }}>

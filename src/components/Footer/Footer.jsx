@@ -20,20 +20,19 @@ export default function Footer() {
 
   const quickLinks = [
     { name: t.nav.home, path: '/' },
-    { name: t.nav.cars, path: '/cars' },
     { name: t.nav.spareParts, path: '/spare-parts' },
+    { name: t.nav.accessories, path: '/accessories' },
     { name: t.nav.maintenance, path: '/maintenance' },
     { name: t.nav.about, path: '/about' },
     { name: t.nav.contact, path: '/contact' }
   ];
 
   const servicesLinks = [
-    { name: 'Car Import', path: '/cars?filter=import' },
-    { name: 'Car Sales', path: '/cars' },
-    { name: 'Spare Parts', path: '/spare-parts' },
-    { name: 'Maintenance & Repair', path: '/maintenance' },
-    { name: 'Computer Diagnostics', path: '/maintenance' },
-    { name: 'OEM Parts Sourcing', path: '/spare-parts' }
+    { name: lang === 'ar' ? 'قطع الغيار الأصلية' : 'Genuine Spare Parts', path: '/spare-parts' },
+    { name: lang === 'ar' ? 'إكسسوارات السيارات' : 'Car Accessories', path: '/accessories' },
+    { name: lang === 'ar' ? 'الصيانة والإصلاح' : 'Maintenance & Repair', path: '/maintenance' },
+    { name: lang === 'ar' ? 'فحص وبرمجة كمبيوتر' : 'Computer Diagnostics', path: '/maintenance' },
+    { name: lang === 'ar' ? 'طلب قطع مخصصة' : 'Custom Parts Sourcing', path: '/contact' }
   ];
 
   return (

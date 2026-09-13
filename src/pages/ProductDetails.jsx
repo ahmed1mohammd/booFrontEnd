@@ -37,19 +37,34 @@ export default function ProductDetails() {
     try {
       setLoading(true);
       setError(null);
-      const timeoutCap = new Promise((resolve) => setTimeout(() => resolve({ timeout: true }), 3000));
-      const fetchReq = productsApi.getSparePart(id);
+      let found = false;
 
-      const res = await Promise.race([fetchReq, timeoutCap]);
-      if (res && res.success) {
-        setProduct(res.data);
-        setRelated(res.related || []);
-      } else if (res && res.timeout) {
-        const fastRes = await fetchReq;
-        if (fastRes?.success) {
-          setProduct(fastRes.data);
-          setRelated(fastRes.related || []);
+      try {
+        const res = await productsApi.getSparePart(id);
+        if (res && res.success) {
+          setProduct(res.data);
+          setRelated(res.related || []);
+          found = true;
         }
+      } catch (e) {
+        // Not a spare part, try accessory
+      }
+
+      if (!found) {
+        try {
+          const accRes = await productsApi.getAccessory(id);
+          if (accRes && accRes.success) {
+            setProduct(accRes.data);
+            setRelated(accRes.related || []);
+            found = true;
+          }
+        } catch (e) {
+          // Both failed
+        }
+      }
+
+      if (!found) {
+        setError('Product not found.');
       }
     } catch (err) {
       setError(err.message || 'Product not found.');

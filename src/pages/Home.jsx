@@ -2,12 +2,12 @@ import React from 'react';
 import HeroCarousel from '../components/Hero/HeroCarousel';
 import ServicesSection from '../components/Services/ServicesSection';
 import AboutSection from '../components/About/AboutSection';
-import FeaturedCars from '../components/Cars/FeaturedCars';
+import SpareParts from '../components/Parts/SpareParts';
 import MaintenanceSection from '../components/Maintenance/MaintenanceSection';
 import WhyBOO from '../components/WhyBOO/WhyBOO';
 import CTASection from '../components/CTA/CTASection';
 
-export default function Home({ onSelectCar, onOpenBooking }) {
+export default function Home({ onOpenBooking }) {
   return (
     <div className="boo-home-page">
       {/* 1. Hero Carousel */}
@@ -19,8 +19,8 @@ export default function Home({ onSelectCar, onOpenBooking }) {
       {/* 3. About BOO */}
       <AboutSection />
 
-      {/* 4. Featured Cars */}
-      <FeaturedCars onSelectCar={onSelectCar} />
+      {/* 4. Spare Parts Catalog Preview */}
+      <SpareParts />
 
       {/* 5. Maintenance */}
       <MaintenanceSection onOpenBooking={onOpenBooking} />
@@ -33,3 +33,4 @@ export default function Home({ onSelectCar, onOpenBooking }) {
     </div>
   );
 }
+

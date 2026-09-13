@@ -43,8 +43,8 @@ export default function Navbar({ onOpenSearch }) {
 
   const navLinks = [
     { name: t.nav.home, path: '/' },
-    { name: t.nav.cars, path: '/cars' },
     { name: t.nav.spareParts, path: '/spare-parts' },
+    { name: t.nav.accessories, path: '/accessories' },
     { name: t.nav.maintenance, path: '/maintenance' },
     { name: t.nav.about, path: '/about' },
     { name: t.nav.contact, path: '/contact' }

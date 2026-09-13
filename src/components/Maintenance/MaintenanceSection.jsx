@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import {
   CalendarCheck,
@@ -13,14 +13,24 @@ import {
   Calendar
 } from 'lucide-react';
 import { MAINTENANCE_SERVICES } from '../../data/homeData';
+import { productsApi } from '../../api/productsApi';
 import { useLanguage } from '../../context/LanguageContext';
 import './MaintenanceSection.css';
 
 export default function MaintenanceSection({
-  services = MAINTENANCE_SERVICES,
+  services: initialServices = MAINTENANCE_SERVICES,
   onOpenBooking
 }) {
   const { t } = useLanguage();
+  const [services, setServices] = useState(initialServices);
+
+  useEffect(() => {
+    productsApi.getServices().then((res) => {
+      if (res.success && res.data.length > 0) {
+        setServices(res.data);
+      }
+    });
+  }, []);
 
   const getServiceIcon = (iconName) => {
     switch (iconName) {

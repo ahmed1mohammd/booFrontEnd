@@ -1,10 +1,20 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Sparkles, Calendar, Clock, CheckCircle2, ShieldCheck, Wrench, PhoneCall } from 'lucide-react';
 import { MAINTENANCE_SERVICES, BRAND_CONFIG } from '../data/homeData';
+import { productsApi } from '../api/productsApi';
 import { useLanguage } from '../context/LanguageContext';
 
 export default function MaintenancePage({ onOpenBooking }) {
   const { lang, t } = useLanguage();
+  const [services, setServices] = useState(MAINTENANCE_SERVICES);
+
+  useEffect(() => {
+    productsApi.getServices().then((res) => {
+      if (res.success && res.data.length > 0) {
+        setServices(res.data);
+      }
+    });
+  }, []);
 
   return (
     <div className="boo-maintenance-page">
@@ -30,7 +40,7 @@ export default function MaintenancePage({ onOpenBooking }) {
       <div className="section" style={{ backgroundColor: 'var(--bg-main)' }}>
         <div className="container">
           <div className="grid-3" style={{ marginBottom: '4rem' }}>
-            {MAINTENANCE_SERVICES.map((item) => (
+            {services.map((item) => (
               <div key={item.id} className="boo-maint-card card">
                 <div className="boo-maint-top">
                   <div className="boo-maint-icon-box">

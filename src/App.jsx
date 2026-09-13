@@ -4,13 +4,12 @@ import TopContactBar from './components/Header/TopContactBar';
 import Navbar from './components/Header/Navbar';
 import Footer from './components/Footer/Footer';
 import SearchModal from './components/common/SearchModal';
-import CarDetailModal from './components/common/CarDetailModal';
 import ServiceBookingModal from './components/common/ServiceBookingModal';
 import QuickCartToast from './components/Cart/QuickCartToast';
 
 // Pages
 import Home from './pages/Home';
-import Cars from './pages/Cars';
+import AccessoriesPage from './pages/Accessories';
 import SparePartsPage from './pages/SpareParts';
 import ProductDetails from './pages/ProductDetails';
 import Cart from './pages/Cart';
@@ -50,7 +49,6 @@ function ScrollToTop() {
 
 function MainApp() {
   const [searchOpen, setSearchOpen] = useState(false);
-  const [selectedCar, setSelectedCar] = useState(null);
   const [bookingService, setBookingService] = useState(null);
   const [bookingOpen, setBookingOpen] = useState(false);
 
@@ -75,17 +73,12 @@ function MainApp() {
           {/* Main Website Routes */}
           <Route
             path="/"
-            element={
-              <Home
-                onSelectCar={(car) => setSelectedCar(car)}
-                onOpenBooking={handleOpenBooking}
-              />
-            }
+            element={<Home onOpenBooking={handleOpenBooking} />}
           />
-          <Route
-            path="/cars"
-            element={<Cars onSelectCar={(car) => setSelectedCar(car)} />}
-          />
+
+          {/* Accessories */}
+          <Route path="/accessories" element={<AccessoriesPage />} />
+          <Route path="/accessories/:id" element={<ProductDetails />} />
 
           {/* E-Commerce Spare Parts Routes */}
           <Route path="/spare-parts" element={<SparePartsPage />} />
@@ -107,12 +100,7 @@ function MainApp() {
           {/* Fallback */}
           <Route
             path="*"
-            element={
-              <Home
-                onSelectCar={(car) => setSelectedCar(car)}
-                onOpenBooking={handleOpenBooking}
-              />
-            }
+            element={<Home onOpenBooking={handleOpenBooking} />}
           />
         </Routes>
       </main>
@@ -127,13 +115,6 @@ function MainApp() {
       <SearchModal
         isOpen={searchOpen}
         onClose={() => setSearchOpen(false)}
-        onSelectCar={(car) => setSelectedCar(car)}
-      />
-
-      <CarDetailModal
-        car={selectedCar}
-        isOpen={Boolean(selectedCar)}
-        onClose={() => setSelectedCar(null)}
       />
 
       <ServiceBookingModal

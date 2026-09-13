@@ -1,24 +1,41 @@
-import React from 'react';
-import { Award, Users, Layers, HeartHandshake, CheckCircle2 } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Award, Users, Layers, HeartHandshake, CheckCircle2, ShieldCheck, Cpu, Wrench, Sparkles, Package } from 'lucide-react';
 import { WHY_CHOOSE_BOO } from '../../data/homeData';
+import { productsApi } from '../../api/productsApi';
 import { useLanguage } from '../../context/LanguageContext';
 import './WhyBOO.css';
 
-export default function WhyBOO({ reasons = WHY_CHOOSE_BOO }) {
+export default function WhyBOO({ reasons: initialReasons = WHY_CHOOSE_BOO }) {
   const { t } = useLanguage();
+  const [reasons, setReasons] = useState(initialReasons);
+
+  useEffect(() => {
+    productsApi.getContent().then((res) => {
+      if (res.success && res.data?.whyBoo && res.data.whyBoo.length > 0) {
+        setReasons(res.data.whyBoo);
+      }
+    });
+  }, []);
 
   const getReasonIcon = (iconName) => {
     switch (iconName) {
       case 'Award':
-        return <Award size={30} />;
+      case 'ShieldCheck':
+        return <ShieldCheck size={30} />;
       case 'Users':
-        return <Users size={30} />;
-      case 'Layers':
-        return <Layers size={30} />;
       case 'HeartHandshake':
         return <HeartHandshake size={30} />;
+      case 'Layers':
+      case 'Package':
+        return <Package size={30} />;
+      case 'Cpu':
+        return <Cpu size={30} />;
+      case 'Wrench':
+        return <Wrench size={30} />;
+      case 'Sparkles':
+        return <Sparkles size={30} />;
       default:
-        return <Award size={30} />;
+        return <Sparkles size={30} />;
     }
   };
 

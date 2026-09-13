@@ -11,10 +11,39 @@ import {
   CheckCircle2
 } from 'lucide-react';
 import { useCart } from '../context/CartContext';
-import { EGYPTIAN_GOVERNORATES } from '../data/sparePartsProducts';
 import { ordersApi } from '../api/ordersApi';
 import EmptyState from '../components/common/EmptyState';
 import { useLanguage } from '../context/LanguageContext';
+
+export const EGYPTIAN_GOVERNORATES = [
+  'Cairo (القاهرة)',
+  'Giza (الجيزة)',
+  'Alexandria (الإسكندرية)',
+  'Menoufia (المنوفية)',
+  'Qalyubia (القليوبية)',
+  'Gharbia (الغربية)',
+  'Dakahlia (الدقهلية)',
+  'Sharqia (الشرقية)',
+  'Damietta (دمياط)',
+  'Beheira (البحيرة)',
+  'Kafr El-Sheikh (كفر الشيخ)',
+  'Ismailia (الإسماعيلية)',
+  'Port Said (بورسعيد)',
+  'Suez (السويس)',
+  'Fayoum (الفيوم)',
+  'Beni Suef (بني سويف)',
+  'Minya (المنيا)',
+  'Asyut (أسيوط)',
+  'Sohag (سوهاج)',
+  'Qena (قنا)',
+  'Luxor (الأقصر)',
+  'Aswan (أسوان)',
+  'Red Sea (البحر الأحمر)',
+  'South Sinai (جنوب سيناء)',
+  'North Sinai (شمال سيناء)',
+  'Matrouh (مطروح)',
+  'New Valley (الوادي الجديد)'
+];
 
 export default function Checkout() {
   const { cartItems, subtotal, shipping, total, clearCart } = useCart();
