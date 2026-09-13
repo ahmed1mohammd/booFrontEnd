@@ -48,7 +48,8 @@ export default function AccessoriesPage() {
 
       const params = {
         search: debouncedSearch,
-        sort: sortBy
+        sort: sortBy,
+        limit: '100'
       };
       if (activeCategory && activeCategory !== 'all') {
         params.category = activeCategory;
