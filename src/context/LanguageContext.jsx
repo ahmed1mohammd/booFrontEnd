@@ -83,7 +83,11 @@ export const translations = {
       services: 'Services',
       contactInfo: 'Contact Information',
       rights: 'All rights reserved.',
-      legalNotice: 'Legal Notice & Privacy'
+      legalNotice: 'Legal Notice',
+      shippingPolicy: 'Shipping Policy',
+      privacyPolicy: 'Privacy Policy',
+      refundPolicy: 'Refund & Return Policy',
+      trackOrder: 'Track Order'
     }
   },
   ar: {
@@ -166,7 +170,11 @@ export const translations = {
       services: 'الخدمات',
       contactInfo: 'بيانات التواصل',
       rights: 'جميع الحقوق محفوظة.',
-      legalNotice: 'إشعار قانوني وسياسة الخصوصية'
+      legalNotice: 'الإشعار القانوني',
+      shippingPolicy: 'سياسة التوصيل والشحن',
+      privacyPolicy: 'سياسة الخصوصية',
+      refundPolicy: 'سياسة الاسترجاع والإرجاع',
+      trackOrder: 'تتبع الطلب'
     }
   }
 };

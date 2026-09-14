@@ -21,6 +21,10 @@ import MaintenancePage from './pages/Maintenance';
 import AboutPage from './pages/About';
 import Contact from './pages/Contact';
 import LegalNoticePage from './pages/LegalNotice';
+import ShippingPolicy from './pages/ShippingPolicy';
+import PrivacyPolicy from './pages/PrivacyPolicy';
+import RefundPolicy from './pages/RefundPolicy';
+import TrackOrder from './pages/TrackOrder';
 
 // Contexts & Styles
 import { LanguageProvider } from './context/LanguageContext';
@@ -97,8 +101,12 @@ function MainApp() {
           />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/track-order" element={<TrackOrder />} />
+          <Route path="/shipping-policy" element={<ShippingPolicy />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="/privacy" element={<PrivacyPolicy />} />
+          <Route path="/refund-policy" element={<RefundPolicy />} />
           <Route path="/legal-notice" element={<LegalNoticePage />} />
-          <Route path="/privacy" element={<LegalNoticePage />} />
 
           {/* Fallback */}
           <Route

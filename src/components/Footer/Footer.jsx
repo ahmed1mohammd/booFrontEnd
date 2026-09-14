@@ -23,8 +23,15 @@ export default function Footer() {
     { name: t.nav.spareParts, path: '/spare-parts' },
     { name: t.nav.accessories, path: '/accessories' },
     { name: t.nav.maintenance, path: '/maintenance' },
+    { name: t.footer.trackOrder, path: '/track-order' },
     { name: t.nav.about, path: '/about' },
-    { name: t.nav.contact, path: '/contact' },
+    { name: t.nav.contact, path: '/contact' }
+  ];
+
+  const policyLinks = [
+    { name: t.footer.shippingPolicy, path: '/shipping-policy' },
+    { name: t.footer.privacyPolicy, path: '/privacy-policy' },
+    { name: t.footer.refundPolicy, path: '/refund-policy' },
     { name: t.footer.legalNotice, path: '/legal-notice' }
   ];
 
@@ -188,12 +195,15 @@ export default function Footer() {
           <p className="boo-copyright">
             &copy; {currentYear} {BRAND_CONFIG.fullName}. {t.footer.rights}
           </p>
-          <div className="boo-footer-bottom-links">
-            <Link to="/legal-notice" style={{ color: 'var(--footer-text, #c2d8eb)', textDecoration: 'none', transition: 'color 0.2s' }}>
-              {t.footer.legalNotice}
-            </Link>
-            <span className="dot">•</span>
-            <span>Shebin El-Kom, Menoufia</span>
+          <div className="boo-footer-bottom-links" style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem 1rem', alignItems: 'center' }}>
+            {policyLinks.map((p, idx) => (
+              <React.Fragment key={p.path}>
+                <Link to={p.path} style={{ color: 'var(--footer-text, #c2d8eb)', textDecoration: 'none', transition: 'color 0.2s' }}>
+                  {p.name}
+                </Link>
+                {idx < policyLinks.length - 1 && <span className="dot">•</span>}
+              </React.Fragment>
+            ))}
           </div>
         </div>
       </div>
