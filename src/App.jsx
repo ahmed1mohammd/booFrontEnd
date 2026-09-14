@@ -20,6 +20,7 @@ import OrderDetails from './pages/OrderDetails';
 import MaintenancePage from './pages/Maintenance';
 import AboutPage from './pages/About';
 import Contact from './pages/Contact';
+import LegalNoticePage from './pages/LegalNotice';
 
 // Contexts & Styles
 import { LanguageProvider } from './context/LanguageContext';
@@ -96,6 +97,8 @@ function MainApp() {
           />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/legal-notice" element={<LegalNoticePage />} />
+          <Route path="/privacy" element={<LegalNoticePage />} />
 
           {/* Fallback */}
           <Route

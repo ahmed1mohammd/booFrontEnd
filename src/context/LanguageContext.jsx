@@ -82,7 +82,8 @@ export const translations = {
       quickLinks: 'Quick Links',
       services: 'Services',
       contactInfo: 'Contact Information',
-      rights: 'All rights reserved.'
+      rights: 'All rights reserved.',
+      legalNotice: 'Legal Notice & Privacy'
     }
   },
   ar: {
@@ -164,7 +165,8 @@ export const translations = {
       quickLinks: 'روابط سريعة',
       services: 'الخدمات',
       contactInfo: 'بيانات التواصل',
-      rights: 'جميع الحقوق محفوظة.'
+      rights: 'جميع الحقوق محفوظة.',
+      legalNotice: 'إشعار قانوني وسياسة الخصوصية'
     }
   }
 };

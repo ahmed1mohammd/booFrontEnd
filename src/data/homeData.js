@@ -75,13 +75,14 @@ export const BRAND_CONFIG = {
       { display: "01102624105", raw: "01102624105" }
     ],
     primaryPhone: "01122559066",
-    emailPlaceholder: "info@booautomotive.com",
+    email: "boo@booinvestment.online",
+    emailPlaceholder: "boo@booinvestment.online",
     workingHours: "Saturday - Thursday: 9:00 AM - 10:00 PM | Friday: 1:00 PM - 10:00 PM",
     socials: {
       whatsapp: "https://wa.me/201122559066",
       facebook: "#",
       instagram: "#",
-      email: "mailto:info@booautomotive.com"
+      email: "mailto:boo@booinvestment.online"
     }
   }
 };

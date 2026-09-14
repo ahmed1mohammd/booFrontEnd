@@ -24,7 +24,8 @@ export default function Footer() {
     { name: t.nav.accessories, path: '/accessories' },
     { name: t.nav.maintenance, path: '/maintenance' },
     { name: t.nav.about, path: '/about' },
-    { name: t.nav.contact, path: '/contact' }
+    { name: t.nav.contact, path: '/contact' },
+    { name: t.footer.legalNotice, path: '/legal-notice' }
   ];
 
   const servicesLinks = [
@@ -163,6 +164,13 @@ export default function Footer() {
                     <span>{p.display}</span>
                   </a>
                 ))}
+                <a
+                  href={`mailto:${BRAND_CONFIG.contact.email || 'boo@booinvestment.online'}`}
+                  className="boo-contact-phone-item"
+                >
+                  <Mail size={14} className="contact-icon" />
+                  <span>{BRAND_CONFIG.contact.email || 'boo@booinvestment.online'}</span>
+                </a>
               </div>
 
               <div className="boo-footer-hours">
@@ -181,7 +189,9 @@ export default function Footer() {
             &copy; {currentYear} {BRAND_CONFIG.fullName}. {t.footer.rights}
           </p>
           <div className="boo-footer-bottom-links">
-            <span>Official Automotive Platform</span>
+            <Link to="/legal-notice" style={{ color: 'var(--footer-text, #c2d8eb)', textDecoration: 'none', transition: 'color 0.2s' }}>
+              {t.footer.legalNotice}
+            </Link>
             <span className="dot">•</span>
             <span>Shebin El-Kom, Menoufia</span>
           </div>
