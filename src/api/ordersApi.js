@@ -185,6 +185,28 @@ export const ordersApi = {
   },
 
   /**
+   * Verify payment for an order with backend
+   * GET /api/payment/verify/:orderNumber
+   */
+  async verifyPayment(orderId) {
+    try {
+      const res = await fetch(`${API_BASE_URL}/payment/verify/${orderId}`);
+      if (res.ok) {
+        const json = await res.json();
+        if (json.success && json.data) {
+          const updated = json.data.order || json.data;
+          saveOrderToStorage(updated);
+          return updated;
+        }
+      }
+    } catch (e) {
+      console.warn('Backend payment verification offline, using local fallback:', e);
+    }
+
+    return this.confirmPayment(orderId);
+  },
+
+  /**
    * Verify and confirm payment for an order
    * POST /api/orders/:id/verify-payment
    */
